@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-@Component
 public class TicketGenerator {
     private long nextTicketId;
 
@@ -59,23 +58,19 @@ public class TicketGenerator {
     }
 
     Ticket createEmergencyTicket() {
-        return createTicket(Priority.emergency,
-                "Urgent problem. Fix immediately or revenue will be lost!");
+        return createTicket(Priority.emergency, "Urgent problem. Fix immediately or revenue will be lost!");
     }
 
     Ticket createHighPriorityTicket() {
-        return createTicket(Priority.high,
-                "Serious issue. Fix immediately.");
+        return createTicket(Priority.high, "Serious issue. Fix immediately.");
     }
 
     Ticket createMediumPriorityTicket() {
-        return createTicket(Priority.medium,
-                "There is an issue; take a look whenever you have time.");
+        return createTicket(Priority.medium, "There is an issue; take a look whenever you have time.");
     }
 
     Ticket createLowPriorityTicket() {
-        return createTicket(Priority.low,
-                "Some minor problems have been found.");
+        return createTicket(Priority.low, "Some minor problems have been found.");
     }
 
     Ticket createTicket(Priority priority, String description) {
@@ -84,7 +79,6 @@ public class TicketGenerator {
         ticket.setPriority(priority);
         ticket.setIssueDateTime(GregorianCalendar.getInstance());
         ticket.setDescription(description);
-
         return ticket;
     }
 }

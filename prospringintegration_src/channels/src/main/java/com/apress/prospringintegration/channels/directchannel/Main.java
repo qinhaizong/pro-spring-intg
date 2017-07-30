@@ -29,19 +29,14 @@ public class Main {
 
         String contextName = "direct-channel.xml";
 
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(contextName);
+        context.start();
 
-        ProblemReporter problemReporter =
-                applicationContext.getBean(ProblemReporter.class);
-        TicketGenerator ticketGenerator =
-                applicationContext.getBean(TicketGenerator.class);
-        TicketMessageHandler ticketMessageHandler =
-                applicationContext.getBean(TicketMessageHandler.class);
+        ProblemReporter problemReporter = context.getBean(ProblemReporter.class);
+        TicketGenerator ticketGenerator = context.getBean(TicketGenerator.class);
+        TicketMessageHandler ticketMessageHandler = context.getBean(TicketMessageHandler.class);
 
-        DirectChannel channel =
-                applicationContext.getBean("ticketChannel", DirectChannel.class);
+        DirectChannel channel = context.getBean("ticketChannel", DirectChannel.class);
         channel.subscribe(ticketMessageHandler);
 
         List<Ticket> tickets = ticketGenerator.createTickets();

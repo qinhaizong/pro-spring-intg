@@ -17,21 +17,25 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
-       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/integration
     http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
 		http://www.springframework.org/schema/beans
-		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-		http://www.springframework.org/schema/context
-		http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-  <context:component-scan base-package="com.apress.prospringintegration.channels.executorchannel"/>
-  <context:component-scan base-package="com.apress.prospringintegration.channels.core"/>
-
-
-  <int:channel id="ticketChannel" datatype="com.apress.prospringintegration.channels.core.Ticket">
-    <int:dispatcher task-executor="executor"/>
-  </int:channel>
-
+    <bean id="problemReporter" class="com.apress.prospringintegration.channels.executorchannel.ProblemReporter">
+        <property name="channel" ref="ticketChannel"/>
+    </bean>
+    <bean id="ticketMessageHandler"
+          class="com.apress.prospringintegration.channels.executorchannel.TicketMessageHandler"/>
+    <bean id="ticketGenerator" class="com.apress.prospringintegration.channels.core.TicketGenerator"/>
+    <bean id="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="5"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="queueCapacity" value="25"/>
+    </bean>
+    <!-- org.springframework.integration.channel.ExecutorChannel -->
+    <int:channel id="ticketChannel" datatype="com.apress.prospringintegration.channels.core.Ticket">
+        <int:dispatcher task-executor="executor"/>
+    </int:channel>
 
 </beans>

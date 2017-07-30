@@ -22,12 +22,10 @@ import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
 public class ProblemReporter {
 
     private DirectChannel channel;
 
-    @Value("#{ticketChannel}")
     public void setChannel(DirectChannel channel) {
         this.channel = channel;
     }

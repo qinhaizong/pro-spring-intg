@@ -23,7 +23,6 @@ import org.springframework.integration.MessagingException;
 import org.springframework.integration.core.MessageHandler;
 import org.springframework.stereotype.Component;
 
-@Component
 public class TicketMessageHandler implements MessageHandler {
 
     @Override

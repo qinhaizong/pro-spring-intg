@@ -28,8 +28,7 @@ public class Main {
     public static void main(String[] args) {
         String contextName = "executor-channel.xml";
 
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext(contextName);
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
         applicationContext.start();
 
         ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);

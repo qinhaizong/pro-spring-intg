@@ -22,14 +22,12 @@ import org.springframework.integration.channel.ExecutorChannel;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
 public class ProblemReporter {
     private ExecutorChannel channel;
 
     public ProblemReporter() {
     }
 
-    @Value("#{ticketChannel}")
     public void setChannel(ExecutorChannel channel) {
         this.channel = channel;
     }
