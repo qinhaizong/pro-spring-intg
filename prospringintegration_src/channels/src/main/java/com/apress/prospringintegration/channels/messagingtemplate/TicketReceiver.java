@@ -17,10 +17,8 @@
 package com.apress.prospringintegration.channels.messagingtemplate;
 
 import com.apress.prospringintegration.channels.core.Ticket;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.Message;
 import org.springframework.integration.core.MessagingTemplate;
-import org.springframework.stereotype.Component;
 
 public class TicketReceiver implements Runnable {
 
