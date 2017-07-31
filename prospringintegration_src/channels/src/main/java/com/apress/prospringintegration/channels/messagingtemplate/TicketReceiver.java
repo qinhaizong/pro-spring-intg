@@ -22,7 +22,6 @@ import org.springframework.integration.Message;
 import org.springframework.integration.core.MessagingTemplate;
 import org.springframework.stereotype.Component;
 
-@Component
 public class TicketReceiver implements Runnable {
 
     private final static int RECEIVE_TIMEOUT = 1000;
@@ -32,7 +31,6 @@ public class TicketReceiver implements Runnable {
     public TicketReceiver() {
     }
 
-    @Autowired
     public void setMessagingTemplate(MessagingTemplate messagingTemplate) {
         this.messagingTemplate = messagingTemplate;
         this.messagingTemplate.setReceiveTimeout(RECEIVE_TIMEOUT);

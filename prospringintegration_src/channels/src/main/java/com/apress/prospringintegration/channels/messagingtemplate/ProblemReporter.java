@@ -21,12 +21,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.core.MessagingTemplate;
 import org.springframework.stereotype.Component;
 
-@Component
 public class ProblemReporter {
 
     private MessagingTemplate messagingTemplate;
 
-    @Autowired
     public void setMessagingTemplate(MessagingTemplate messagingTemplate) {
         this.messagingTemplate = messagingTemplate;
     }

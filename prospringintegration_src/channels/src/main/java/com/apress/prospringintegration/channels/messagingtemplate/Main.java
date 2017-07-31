@@ -27,16 +27,12 @@ public class Main {
     public static void main(String[] args) {
         String contextName = "messaging-template.xml";
 
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext(contextName);
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
         applicationContext.start();
 
-        ProblemReporter problemReporter =
-                applicationContext.getBean(ProblemReporter.class);
-        TicketReceiver ticketReceiver =
-                applicationContext.getBean(TicketReceiver.class);
-        TicketGenerator ticketGenerator =
-                applicationContext.getBean(TicketGenerator.class);
+        ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
+        TicketReceiver ticketReceiver = applicationContext.getBean(TicketReceiver.class);
+        TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
 
         List<Ticket> tickets = ticketGenerator.createTickets();
         for (Ticket ticket : tickets) {
