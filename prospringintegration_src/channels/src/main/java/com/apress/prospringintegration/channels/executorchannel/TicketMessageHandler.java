@@ -27,8 +27,7 @@ import org.springframework.stereotype.Component;
 public class TicketMessageHandler implements MessageHandler {
 
     @Override
-    public void handleMessage(Message<?> message) throws MessageHandlingException,
-            MessageDeliveryException {
+    public void handleMessage(Message<?> message) throws MessageHandlingException, MessageDeliveryException {
         Object payload = message.getPayload();
         if (payload instanceof Ticket) {
             handleTicket((Ticket) payload);
@@ -39,5 +38,6 @@ public class TicketMessageHandler implements MessageHandler {
 
     void handleTicket(Ticket ticket) {
         /* Handle Ticket Here */
+        System.out.println("Received ticket - " + ticket.toString());
     }
 }
