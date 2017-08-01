@@ -22,10 +22,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 
-@SuppressWarnings("unused")
-@Component
-public class TicketMessagePriorityComparator
-        implements Comparator<Message<Ticket>> {
+public class TicketMessagePriorityComparator implements Comparator<Message<Ticket>> {
 
     @Override
     public int compare(Message<Ticket> message1, Message<Ticket> message2) {

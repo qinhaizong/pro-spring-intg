@@ -27,8 +27,7 @@ public class EmergencyTicketMain {
     public static void main(String[] args) {
         String contextName = "queue-channel-emergency-handling.xml";
 
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext(contextName);
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
         applicationContext.start();
 
         ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);

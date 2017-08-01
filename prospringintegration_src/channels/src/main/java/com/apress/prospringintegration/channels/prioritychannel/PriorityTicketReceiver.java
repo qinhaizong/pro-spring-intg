@@ -22,13 +22,11 @@ import org.springframework.integration.Message;
 import org.springframework.integration.channel.PriorityChannel;
 import org.springframework.stereotype.Component;
 
-@Component
 public class PriorityTicketReceiver implements Runnable {
     private final static int RECEIVE_TIMEOUT = 1000;
 
     private PriorityChannel channel;
 
-    @Value("#{ticketChannel}")
     public void setChannel(PriorityChannel channel) {
         this.channel = channel;
     }

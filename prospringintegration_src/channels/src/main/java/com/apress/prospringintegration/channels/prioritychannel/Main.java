@@ -27,8 +27,7 @@ public class Main {
     public static void main(String[] args) {
         String contextName = "priority-channel.xml";
 
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext(contextName);
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
         applicationContext.start();
 
         PriorityProblemReporter problemReporter = applicationContext.getBean(PriorityProblemReporter.class);

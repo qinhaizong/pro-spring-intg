@@ -17,14 +17,12 @@
 package com.apress.prospringintegration.channels.prioritychannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.integration.channel.PriorityChannel;
 import org.springframework.integration.message.GenericMessage;
 
 public class ProblemReporter {
     protected PriorityChannel channel;
 
-    @Value("#{ticketChannel}")
     public void setChannel(PriorityChannel channel) {
         this.channel = channel;
     }
