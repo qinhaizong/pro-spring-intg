@@ -22,14 +22,12 @@ import org.springframework.integration.Message;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.stereotype.Component;
 
-@Component
 public class TicketReceiver implements Runnable {
 
     final static int RECEIVE_TIMEOUT = 1000;
 
     protected QueueChannel channel;
 
-    @Value("#{ticketChannel}")
     public void setChannel(QueueChannel channel) {
         this.channel = channel;
     }

@@ -25,12 +25,10 @@ import org.springframework.util.Assert;
 
 import java.util.List;
 
-@Component
 public class EmergencyTicketReceiver extends TicketReceiver {
 
     private MessageSelector emergencyTicketSelector;
 
-    @Autowired
     public void setEmergencyTicketSelector(MessageSelector emergencyTicketSelector) {
         this.emergencyTicketSelector = emergencyTicketSelector;
     }

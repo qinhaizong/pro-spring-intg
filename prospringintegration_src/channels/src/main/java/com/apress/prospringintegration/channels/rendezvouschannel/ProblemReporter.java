@@ -22,11 +22,9 @@ import org.springframework.integration.channel.RendezvousChannel;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
 public class ProblemReporter {
     private RendezvousChannel channel;
 
-    @Value("#{ticketChannel}")
     public void setChannel(RendezvousChannel channel) {
         this.channel = channel;
     }

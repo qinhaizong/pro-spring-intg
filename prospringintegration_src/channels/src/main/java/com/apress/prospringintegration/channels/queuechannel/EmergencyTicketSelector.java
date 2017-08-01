@@ -22,8 +22,8 @@ import org.springframework.integration.Message;
 import org.springframework.integration.core.MessageSelector;
 import org.springframework.stereotype.Component;
 
-@Component
 public class EmergencyTicketSelector implements MessageSelector {
+
     @Override
     public boolean accept(Message<?> message) {
         return ((Ticket) message.getPayload()).getPriority() != Priority.emergency;

@@ -26,13 +26,13 @@
         <property name="defaultChannel" ref="ticketChannel"/>
         <property name="receiveTimeout" value="1000"/>
     </bean>
-    <bean id="problemReporter" class="com.apress.prospringintegration.channels.messagingtemplate.ProblemReporter">
+    <bean class="com.apress.prospringintegration.channels.messagingtemplate.ProblemReporter">
         <property name="messagingTemplate" ref="messagingTemplate"/>
     </bean>
-    <bean id="ticketReceiver" class="com.apress.prospringintegration.channels.messagingtemplate.TicketReceiver">
+    <bean class="com.apress.prospringintegration.channels.messagingtemplate.TicketReceiver">
         <property name="messagingTemplate" ref="messagingTemplate"/>
     </bean>
-    <bean id="ticketGenerator" class="com.apress.prospringintegration.channels.core.TicketGenerator"/>
+    <bean class="com.apress.prospringintegration.channels.core.TicketGenerator"/>
     <int:channel id="ticketChannel" datatype="com.apress.prospringintegration.channels.core.Ticket">
         <int:priority-queue capacity="50"/>
     </int:channel>
