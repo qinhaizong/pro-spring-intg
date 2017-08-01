@@ -17,7 +17,7 @@
     <module>activemq-jmschanneladapter</module>
     <module>activemq-jmsbackedchannel</module>
     <module>hornetq-jmschanneladapter</module>
-    <module>rabbitmq</module>
+    <!--<module>rabbitmq</module>-->
     <module>qpid</module>
   </modules>
 

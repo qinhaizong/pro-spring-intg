@@ -14,7 +14,7 @@
   <name>scaling</name>
 
   <modules>
-    <module>messagegroupstore</module>
+    <!--<module>messagegroupstore</module>-->
     <module>concurrency</module>
     <module>claimcheck</module>
   </modules>
