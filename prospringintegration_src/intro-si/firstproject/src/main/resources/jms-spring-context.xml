@@ -30,16 +30,16 @@
 		http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-  <context:component-scan base-package="com.apress.prospringintegration"/>
+    <context:component-scan base-package="com.apress.prospringintegration"/>
 
-  <int:channel id="input"/>
+    <int:channel id="input"/>
 
-  <jms:outbound-channel-adapter channel="input" destination-name="requestQueue"/>
+    <jms:outbound-channel-adapter channel="input" destination-name="requestQueue"/>
 
-  <jms:message-driven-channel-adapter channel="output" destination-name="requestQueue"/>
+    <jms:message-driven-channel-adapter channel="output" destination-name="requestQueue"/>
 
-  <int:channel id="output">
-    <int:queue capacity="10"/>
-  </int:channel>
+    <int:channel id="output">
+        <int:queue capacity="10"/>
+    </int:channel>
 
 </beans>

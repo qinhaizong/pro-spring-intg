@@ -16,14 +16,19 @@
 
 package com.apress.prospringintegration;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MessageHandler {
+
+    private static final Log LOG = LogFactory.getLog(MessageHandler.class);
+
     @ServiceActivator
     public String handleMessage(String message) {
-        System.out.println("Received message: " + message);
+        LOG.info("Received message: " + message);
         return "MESSAGE:" + message;
     }
 }

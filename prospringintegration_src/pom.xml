@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.apress.prospringintegration</groupId>
-    <artifactId>core</artifactId>
+    <artifactId>prospringintegration</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -33,7 +33,7 @@
     </properties>
 
     <modules>
-        <module>channels</module>
+        <!--<module>channels</module>-->
         <module>transformers</module>
         <module>endpoints-adapters</module>
         <module>monitoring</module>
@@ -47,7 +47,7 @@
         <module>scaling</module>
         <module>spring-batch</module>
         <module>customadapters</module>
-        <module>intro-spring</module>
+        <!--<module>intro-spring</module>-->
         <module>webservice</module>
         <!--<module>messageflow</module>-->
     </modules>

@@ -31,8 +31,7 @@ public class JmsConfiguration {
         ActiveMQConnectionFactory targetConnectionFactory = new ActiveMQConnectionFactory();
         targetConnectionFactory.setBrokerURL("vm://localhost");
 
-        CachingConnectionFactory connectionFactory =
-                new CachingConnectionFactory(targetConnectionFactory);
+        CachingConnectionFactory connectionFactory = new CachingConnectionFactory(targetConnectionFactory);
         connectionFactory.setSessionCacheSize(10);
         connectionFactory.setCacheProducers(false);
 
