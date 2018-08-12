@@ -25,9 +25,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String contextName = "messaging-template.xml";
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("messaging-template.xml");
         ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
         TicketReceiver ticketReceiver = applicationContext.getBean(TicketReceiver.class);
         TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);

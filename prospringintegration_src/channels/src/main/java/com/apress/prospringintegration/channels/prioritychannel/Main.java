@@ -25,9 +25,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String contextName = "priority-channel.xml";
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("priority-channel.xml");
         PriorityProblemReporter problemReporter = applicationContext.getBean(PriorityProblemReporter.class);
         PriorityTicketReceiver ticketReceiver = applicationContext.getBean(PriorityTicketReceiver.class);
         TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);

@@ -25,9 +25,7 @@ import java.util.List;
 public class EmergencyTicketMain {
 
     public static void main(String[] args) {
-        String contextName = "queue-channel-emergency-handling.xml";
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("queue-channel-emergency-handling.xml");
         ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
         EmergencyTicketReceiver ticketReceiver = applicationContext.getBean(EmergencyTicketReceiver.class);
         TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);

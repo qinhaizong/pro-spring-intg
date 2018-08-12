@@ -25,10 +25,8 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
-        String contextName = "direct-channel.xml";
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(contextName);
-        context.start();
+    public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("direct-channel.xml");
         ProblemReporter problemReporter = context.getBean(ProblemReporter.class);
         TicketGenerator ticketGenerator = context.getBean(TicketGenerator.class);
         TicketMessageHandler ticketMessageHandler = context.getBean(TicketMessageHandler.class);

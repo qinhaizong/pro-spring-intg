@@ -24,9 +24,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Throwable {
-        String contextName = "rendezvous-channel.xml";
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("rendezvous-channel.xml");
         ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
         TicketReceiver ticketReceiver = applicationContext.getBean(TicketReceiver.class);
         TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
