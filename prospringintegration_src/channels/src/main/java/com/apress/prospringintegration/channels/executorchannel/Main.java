@@ -26,19 +26,12 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String contextName = "executor-channel.xml";
-
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
-
-        ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
-        TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
-        TicketMessageHandler ticketMessageHandler = applicationContext.getBean(TicketMessageHandler.class);
-
-        ExecutorChannel channel = applicationContext.getBean("ticketChannel", ExecutorChannel.class);
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("executor-channel.xml");
+        ProblemReporter problemReporter = context.getBean(ProblemReporter.class);
+        TicketGenerator ticketGenerator = context.getBean(TicketGenerator.class);
+        TicketMessageHandler ticketMessageHandler = context.getBean(TicketMessageHandler.class);
+        ExecutorChannel channel = context.getBean("ticketChannel", ExecutorChannel.class);
         channel.subscribe(ticketMessageHandler);
-
         List<Ticket> tickets = ticketGenerator.createTickets();
         for (Ticket ticket : tickets) {
             problemReporter.openTicket(ticket);

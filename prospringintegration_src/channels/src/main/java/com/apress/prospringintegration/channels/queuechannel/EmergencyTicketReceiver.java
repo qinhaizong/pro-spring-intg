@@ -17,10 +17,8 @@
 package com.apress.prospringintegration.channels.queuechannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.Message;
 import org.springframework.integration.core.MessageSelector;
-import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import java.util.List;
@@ -36,11 +34,9 @@ public class EmergencyTicketReceiver extends TicketReceiver {
     @Override
     public void handleTicketMessage() {
         Message<?> ticketMessage = null;
-
         while (true) {
             List<Message<?>> emergencyTicketMessages = channel.purge(emergencyTicketSelector);
             handleEmergencyTickets(emergencyTicketMessages);
-
             ticketMessage = channel.receive(RECEIVE_TIMEOUT);
             if (ticketMessage != null) {
                 handleTicket((Ticket) ticketMessage.getPayload());

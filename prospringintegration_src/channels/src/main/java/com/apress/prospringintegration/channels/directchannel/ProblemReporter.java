@@ -17,10 +17,8 @@
 package com.apress.prospringintegration.channels.directchannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.support.MessageBuilder;
-import org.springframework.stereotype.Component;
 
 public class ProblemReporter {
 

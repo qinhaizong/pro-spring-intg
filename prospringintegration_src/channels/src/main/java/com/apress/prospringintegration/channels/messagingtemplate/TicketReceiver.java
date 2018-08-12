@@ -36,7 +36,6 @@ public class TicketReceiver implements Runnable {
 
     public void handleTicketMessage() {
         Message<?> ticketMessage;
-
         while (true) {
             ticketMessage = messagingTemplate.receive();
             if (ticketMessage != null) {

@@ -17,7 +17,6 @@
 package com.apress.prospringintegration.channels.core;
 
 import com.apress.prospringintegration.channels.core.Ticket.Priority;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -32,7 +31,6 @@ public class TicketGenerator {
 
     public List<Ticket> createTickets() {
         List<Ticket> tickets = new ArrayList<Ticket>();
-
         tickets.add(createLowPriorityTicket());
         tickets.add(createLowPriorityTicket());
         tickets.add(createLowPriorityTicket());
@@ -53,7 +51,6 @@ public class TicketGenerator {
         tickets.add(createEmergencyTicket());
         tickets.add(createEmergencyTicket());
         tickets.add(createEmergencyTicket());
-
         return tickets;
     }
 

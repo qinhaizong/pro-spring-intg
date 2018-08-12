@@ -21,14 +21,12 @@ import org.springframework.integration.Message;
 import org.springframework.integration.MessageRejectedException;
 import org.springframework.integration.MessagingException;
 import org.springframework.integration.core.MessageHandler;
-import org.springframework.stereotype.Component;
 
 public class TicketMessageHandler implements MessageHandler {
 
     @Override
     public void handleMessage(Message<?> message) throws MessagingException {
         Object payload = message.getPayload();
-
         if (payload instanceof Ticket) {
             handleTicket((Ticket) payload);
         } else {

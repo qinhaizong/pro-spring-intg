@@ -17,10 +17,8 @@
 package com.apress.prospringintegration.channels.prioritychannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.integration.Message;
 import org.springframework.integration.channel.PriorityChannel;
-import org.springframework.stereotype.Component;
 
 public class PriorityTicketReceiver implements Runnable {
     private final static int RECEIVE_TIMEOUT = 1000;
@@ -33,7 +31,6 @@ public class PriorityTicketReceiver implements Runnable {
 
     public void handleTicketMessage() {
         Message<?> ticketMessage = null;
-
         while (true) {
             ticketMessage = channel.receive(RECEIVE_TIMEOUT);
             if (ticketMessage != null) {
@@ -41,7 +38,6 @@ public class PriorityTicketReceiver implements Runnable {
             } else {
                 try {
                     /** Handle some other tasks **/
-
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();

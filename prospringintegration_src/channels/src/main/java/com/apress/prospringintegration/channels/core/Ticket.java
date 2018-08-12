@@ -20,18 +20,10 @@ import java.util.Calendar;
 
 public class Ticket {
 
-    public enum Priority {
-        low,
-        medium,
-        high,
-        emergency
-    }
-
     private long ticketId;
     private Calendar issueDateTime;
     private String description;
     private Priority priority;
-
     public Ticket() {
     }
 
@@ -69,5 +61,12 @@ public class Ticket {
 
     public String toString() {
         return String.format("Ticket# %d: [%s] %s", ticketId, priority, description);
+    }
+
+    public enum Priority {
+        low,
+        medium,
+        high,
+        emergency
     }
 }

@@ -26,19 +26,14 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-
         String contextName = "direct-channel.xml";
-
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(contextName);
         context.start();
-
         ProblemReporter problemReporter = context.getBean(ProblemReporter.class);
         TicketGenerator ticketGenerator = context.getBean(TicketGenerator.class);
         TicketMessageHandler ticketMessageHandler = context.getBean(TicketMessageHandler.class);
-
         DirectChannel channel = context.getBean("ticketChannel", DirectChannel.class);
         channel.subscribe(ticketMessageHandler);
-
         List<Ticket> tickets = ticketGenerator.createTickets();
         for (Ticket ticket : tickets) {
             problemReporter.openTicket(ticket);

@@ -19,7 +19,6 @@ package com.apress.prospringintegration.channels.prioritychannel;
 import com.apress.prospringintegration.channels.core.Ticket;
 import org.springframework.integration.MessageHeaders;
 import org.springframework.integration.message.GenericMessage;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +28,6 @@ public class PriorityProblemReporter extends ProblemReporter {
     void openTicket(Ticket ticket) {
         Map<String, Object> messageHeader = new HashMap<String, Object>();
         messageHeader.put(MessageHeaders.PRIORITY, ticket.getPriority().ordinal());
-
         channel.send(new GenericMessage<Ticket>(ticket, messageHeader));
         System.out.println("Ticket Sent - " + ticket.toString());
     }

@@ -20,7 +20,6 @@ import com.apress.prospringintegration.channels.core.Ticket;
 import com.apress.prospringintegration.channels.core.Ticket.Priority;
 import org.springframework.integration.Message;
 import org.springframework.integration.core.MessageSelector;
-import org.springframework.stereotype.Component;
 
 public class EmergencyTicketSelector implements MessageSelector {
 

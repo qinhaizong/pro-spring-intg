@@ -26,19 +26,15 @@ public class Main {
 
     public static void main(String[] args) {
         String contextName = "priority-channel.xml";
-
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
         applicationContext.start();
-
         PriorityProblemReporter problemReporter = applicationContext.getBean(PriorityProblemReporter.class);
         PriorityTicketReceiver ticketReceiver = applicationContext.getBean(PriorityTicketReceiver.class);
         TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
-
         List<Ticket> tickets = ticketGenerator.createTickets();
         for (Ticket ticket : tickets) {
             problemReporter.openTicket(ticket);
         }
-
         Thread consumerThread = new Thread(ticketReceiver);
         consumerThread.start();
     }

@@ -17,10 +17,8 @@
 package com.apress.prospringintegration.channels.rendezvouschannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.integration.Message;
 import org.springframework.integration.channel.RendezvousChannel;
-import org.springframework.stereotype.Component;
 
 public class TicketReceiver implements Runnable {
 
@@ -39,7 +37,6 @@ public class TicketReceiver implements Runnable {
     @Override
     public void run() {
         Message<?> ticketMessage;
-
         while (true) {
             ticketMessage = channel.receive(RECEIVE_TIMEOUT);
             if (ticketMessage != null) {
@@ -47,7 +44,6 @@ public class TicketReceiver implements Runnable {
             } else {
                 try {
                     /** Handle some other tasks **/
-
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();

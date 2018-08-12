@@ -22,7 +22,6 @@ import org.springframework.integration.MessageDeliveryException;
 import org.springframework.integration.MessageHandlingException;
 import org.springframework.integration.MessageRejectedException;
 import org.springframework.integration.core.MessageHandler;
-import org.springframework.stereotype.Component;
 
 public class TicketMessageHandler implements MessageHandler {
 

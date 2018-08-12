@@ -17,10 +17,8 @@
 package com.apress.prospringintegration.channels.queuechannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.integration.Message;
 import org.springframework.integration.channel.QueueChannel;
-import org.springframework.stereotype.Component;
 
 public class TicketReceiver implements Runnable {
 
@@ -34,7 +32,6 @@ public class TicketReceiver implements Runnable {
 
     public void handleTicketMessage() {
         Message<?> ticketMessage;
-
         while (true) {
             ticketMessage = channel.receive(RECEIVE_TIMEOUT);
             if (ticketMessage != null) {
@@ -42,7 +39,6 @@ public class TicketReceiver implements Runnable {
             } else {
                 try {
                     /** Handle some other tasks **/
-
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();

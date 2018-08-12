@@ -26,19 +26,15 @@ public class EmergencyTicketMain {
 
     public static void main(String[] args) {
         String contextName = "queue-channel-emergency-handling.xml";
-
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
         applicationContext.start();
-
         ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
         EmergencyTicketReceiver ticketReceiver = applicationContext.getBean(EmergencyTicketReceiver.class);
         TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
-
         List<Ticket> tickets = ticketGenerator.createTickets();
         for (Ticket ticket : tickets) {
             problemReporter.openTicket(ticket);
         }
-
         Thread consumerThread = new Thread(ticketReceiver);
         consumerThread.start();
     }
