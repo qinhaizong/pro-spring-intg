@@ -26,7 +26,7 @@ import org.springframework.integration.core.MessageHandler;
 
 public class TicketMessageHandler implements MessageHandler {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(TicketMessageHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TicketMessageHandler.class);
 
     @Override
     public void handleMessage(Message<?> message) throws MessagingException {

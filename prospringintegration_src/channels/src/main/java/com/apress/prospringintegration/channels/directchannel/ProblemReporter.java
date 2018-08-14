@@ -24,7 +24,7 @@ import org.springframework.integration.support.MessageBuilder;
 
 public class ProblemReporter {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(ProblemReporter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProblemReporter.class);
 
     private DirectChannel channel;
 

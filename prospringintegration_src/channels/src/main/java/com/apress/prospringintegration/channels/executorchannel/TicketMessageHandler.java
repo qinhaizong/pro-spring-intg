@@ -17,6 +17,8 @@
 package com.apress.prospringintegration.channels.executorchannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.Message;
 import org.springframework.integration.MessageDeliveryException;
 import org.springframework.integration.MessageHandlingException;
@@ -25,18 +27,16 @@ import org.springframework.integration.core.MessageHandler;
 
 public class TicketMessageHandler implements MessageHandler {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TicketMessageHandler.class);
+
     @Override
     public void handleMessage(Message<?> message) throws MessageHandlingException, MessageDeliveryException {
         Object payload = message.getPayload();
         if (payload instanceof Ticket) {
-            handleTicket((Ticket) payload);
+            LOGGER.info("Received ticket - " + payload.toString());
         } else {
             throw new MessageRejectedException(message, "Unknown data type has been received.");
         }
     }
 
-    void handleTicket(Ticket ticket) {
-        /* Handle Ticket Here */
-        System.out.println("Received ticket - " + ticket.toString());
-    }
 }
