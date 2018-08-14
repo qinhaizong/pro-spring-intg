@@ -17,9 +17,13 @@
 package com.apress.prospringintegration.channels.messagingtemplate;
 
 import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.core.MessagingTemplate;
 
 public class ProblemReporter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProblemReporter.class);
 
     private MessagingTemplate messagingTemplate;
 
@@ -29,6 +33,6 @@ public class ProblemReporter {
 
     public void openTicket(Ticket ticket) {
         messagingTemplate.convertAndSend(ticket);
-        System.out.println("Ticket Sent - " + ticket.toString());
+        LOGGER.info("Ticket Sent - " + ticket.toString());
     }
 }

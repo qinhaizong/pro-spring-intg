@@ -16,18 +16,18 @@
 
 package com.apress.prospringintegration.channels.messagingtemplate;
 
-import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.Message;
 import org.springframework.integration.core.MessagingTemplate;
 
 public class TicketReceiver implements Runnable {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TicketReceiver.class);
+
     private final static int RECEIVE_TIMEOUT = 1000;
 
     private MessagingTemplate messagingTemplate;
-
-    public TicketReceiver() {
-    }
 
     public void setMessagingTemplate(MessagingTemplate messagingTemplate) {
         this.messagingTemplate = messagingTemplate;
@@ -39,15 +39,11 @@ public class TicketReceiver implements Runnable {
         while (true) {
             ticketMessage = messagingTemplate.receive();
             if (ticketMessage != null) {
-                handleTicket((Ticket) ticketMessage.getPayload());
+                LOGGER.info("Received ticket - " + ticketMessage.getPayload().toString());
             } else {
                 /* Perform Some Other Tasks Here */
             }
         }
-    }
-
-    void handleTicket(Ticket ticket) {
-        System.out.println("Received ticket - " + ticket.toString());
     }
 
     @Override
