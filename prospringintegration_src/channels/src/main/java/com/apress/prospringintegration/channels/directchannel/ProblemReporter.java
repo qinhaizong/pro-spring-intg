@@ -17,10 +17,14 @@
 package com.apress.prospringintegration.channels.directchannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.support.MessageBuilder;
 
 public class ProblemReporter {
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(ProblemReporter.class);
 
     private DirectChannel channel;
 
@@ -30,6 +34,6 @@ public class ProblemReporter {
 
     void openTicket(Ticket ticket) {
         channel.send(MessageBuilder.withPayload(ticket).build());
-        System.out.println("Ticket Sent - " + ticket.toString());
+        LOGGER.info("Ticket Sent - " + ticket.toString());
     }
 }

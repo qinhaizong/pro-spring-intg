@@ -17,6 +17,8 @@
 package com.apress.prospringintegration.channels.directchannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.Message;
 import org.springframework.integration.MessageRejectedException;
 import org.springframework.integration.MessagingException;
@@ -24,11 +26,13 @@ import org.springframework.integration.core.MessageHandler;
 
 public class TicketMessageHandler implements MessageHandler {
 
+    public static final Logger LOGGER = LoggerFactory.getLogger(TicketMessageHandler.class);
+
     @Override
     public void handleMessage(Message<?> message) throws MessagingException {
         Object payload = message.getPayload();
         if (payload instanceof Ticket) {
-            System.out.println("Received ticket - " + payload.toString());
+            LOGGER.info("Received ticket - " + payload.toString());
         } else {
             throw new MessageRejectedException(message, "Unknown data type has been received.");
         }
