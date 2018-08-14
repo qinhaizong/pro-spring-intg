@@ -30,7 +30,6 @@ public class Main {
         for (Ticket ticket : ticketGenerator.createTickets()) {
             problemReporter.openTicket(ticket);
         }
-        Thread consumerThread = new Thread(ticketReceiver);
-        consumerThread.start();
+        new Thread(ticketReceiver).start();
     }
 }

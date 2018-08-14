@@ -26,8 +26,7 @@
     <bean class="com.apress.prospringintegration.channels.prioritychannel.PriorityTicketReceiver">
         <property name="channel" ref="ticketChannel"/>
     </bean>
-    <bean id="ticketMessagePriorityComparator"
-          class="com.apress.prospringintegration.channels.prioritychannel.TicketMessagePriorityComparator"/>
+    <bean id="ticketMessagePriorityComparator" class="com.apress.prospringintegration.channels.prioritychannel.TicketMessagePriorityComparator"/>
     <bean class="com.apress.prospringintegration.channels.core.TicketGenerator"/>
     <int:channel id="ticketChannel" datatype="com.apress.prospringintegration.channels.core.Ticket">
         <int:priority-queue capacity="50" comparator="ticketMessagePriorityComparator"/>

@@ -17,10 +17,15 @@
 package com.apress.prospringintegration.channels.prioritychannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.channel.PriorityChannel;
 import org.springframework.integration.message.GenericMessage;
 
 public class ProblemReporter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProblemReporter.class);
+
     protected PriorityChannel channel;
 
     public void setChannel(PriorityChannel channel) {
@@ -29,6 +34,6 @@ public class ProblemReporter {
 
     void openTicket(Ticket ticket) {
         channel.send(new GenericMessage<Ticket>(ticket));
-        System.out.println("Ticket Sent - " + ticket.toString());
+        LOGGER.info("Ticket Sent - " + ticket.toString());
     }
 }

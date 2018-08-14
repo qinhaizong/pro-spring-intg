@@ -17,6 +17,8 @@
 package com.apress.prospringintegration.channels.prioritychannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.MessageHeaders;
 import org.springframework.integration.message.GenericMessage;
 
@@ -25,10 +27,13 @@ import java.util.Map;
 
 public class PriorityProblemReporter extends ProblemReporter {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(PriorityProblemReporter.class);
+
+    @Override
     void openTicket(Ticket ticket) {
         Map<String, Object> messageHeader = new HashMap<String, Object>();
         messageHeader.put(MessageHeaders.PRIORITY, ticket.getPriority().ordinal());
         channel.send(new GenericMessage<Ticket>(ticket, messageHeader));
-        System.out.println("Ticket Sent - " + ticket.toString());
+        LOGGER.info("Ticket Sent - " + ticket.toString());
     }
 }

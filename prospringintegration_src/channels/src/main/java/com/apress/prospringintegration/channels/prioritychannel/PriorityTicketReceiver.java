@@ -16,11 +16,15 @@
 
 package com.apress.prospringintegration.channels.prioritychannel;
 
-import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.Message;
 import org.springframework.integration.channel.PriorityChannel;
 
 public class PriorityTicketReceiver implements Runnable {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PriorityTicketReceiver.class);
+
     private final static int RECEIVE_TIMEOUT = 1000;
 
     private PriorityChannel channel;
@@ -30,11 +34,11 @@ public class PriorityTicketReceiver implements Runnable {
     }
 
     public void handleTicketMessage() {
-        Message<?> ticketMessage = null;
+        Message<?> ticketMessage;
         while (true) {
             ticketMessage = channel.receive(RECEIVE_TIMEOUT);
             if (ticketMessage != null) {
-                handleTicket((Ticket) ticketMessage.getPayload());
+                LOGGER.info("Received ticket - " + ticketMessage.getPayload().toString());
             } else {
                 try {
                     /** Handle some other tasks **/
@@ -44,10 +48,6 @@ public class PriorityTicketReceiver implements Runnable {
                 }
             }
         }
-    }
-
-    void handleTicket(Ticket ticket) {
-        System.out.println("Received ticket - " + ticket.toString());
     }
 
     @Override
