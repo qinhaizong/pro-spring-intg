@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -28,32 +27,24 @@
     http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
     http://www.springframework.org/schema/integration/jms
     http://www.springframework.org/schema/integration/jms/spring-integration-jms-2.0.xsd">
-
-  <context:component-scan base-package="com.apress.prospringintegration.gateways.service"/>
-
-  <int:logging-channel-adapter id="logger" level="INFO" log-full-message="true"/>
-
-  <int:channel id="ticketRequests">
-    <int:interceptors>
-      <int:wire-tap channel="logger"/>
-    </int:interceptors>
-  </int:channel>
-
-  <int:channel id="ticketReplies">
-    <int:queue capacity="10"/>
-    <int:interceptors>
-      <int:wire-tap channel="logger"/>
-    </int:interceptors>
-  </int:channel>
-
-  <int:gateway id="ticketIssueGateway"
-               service-interface=
-                   "com.apress.prospringintegration.gateways.client.TicketIssuer"/>
-
-  <jms:outbound-gateway
-      request-destination-name="issue.request"
-      request-channel="ticketRequests"
-      reply-channel="ticketReplies"
-      connection-factory="connectionFactory"/>
-
+    <context:component-scan base-package="com.apress.prospringintegration.gateways.service"/>
+    <int:logging-channel-adapter id="logger" log-full-message="true"/>
+    <int:channel id="ticketRequests">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    <int:channel id="ticketReplies">
+        <int:queue capacity="10"/>
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    <int:gateway id="ticketIssueGateway"
+                 service-interface="com.apress.prospringintegration.gateways.client.TicketIssuer"/>
+    <jms:outbound-gateway
+            request-destination-name="issue.request"
+            request-channel="ticketRequests"
+            reply-channel="ticketReplies"
+            connection-factory="connectionFactory"/>
 </beans>

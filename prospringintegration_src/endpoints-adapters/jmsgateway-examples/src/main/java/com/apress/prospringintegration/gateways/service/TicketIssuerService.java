@@ -25,6 +25,7 @@ import java.util.Date;
 
 @Component
 public class TicketIssuerService implements TicketIssuer {
+    @Override
     @ServiceActivator
     public Ticket issueTicket(long ticketId) {
         Ticket t = new Ticket();
@@ -32,9 +33,7 @@ public class TicketIssuerService implements TicketIssuer {
         t.setDescription("New Ticket");
         t.setPriority(Ticket.Priority.medium);
         t.setTicketId(ticketId);
-
         System.out.println("Issuing a Ticket: " + t.getIssueDateTime());
-
         return t;
     }
 }

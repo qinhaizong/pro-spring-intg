@@ -21,17 +21,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MainJMSGateway {
     public static void main(String[] args) throws Exception {
-        ClassPathXmlApplicationContext ctx =
-                new ClassPathXmlApplicationContext( "gateway-jms-service.xml");
-
-        ClassPathXmlApplicationContext ctx1 =
-                new ClassPathXmlApplicationContext("gateway-jms-client.xml");
-
-        TicketIssuer ticketIssuer = ctx1.getBean("ticketIssueGateway",
-                TicketIssuer.class);
-
+        new ClassPathXmlApplicationContext("gateway-jms-service.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("gateway-jms-client.xml");
+        TicketIssuer ticketIssuer = context.getBean("ticketIssueGateway", TicketIssuer.class);
         Ticket ticket = ticketIssuer.issueTicket(1);
-
         System.out.println("Ticket " + ticket + " was issued on:" +
                 ticket.getIssueDateTime() + " with ticket id: " +
                 ticket.getTicketId());
