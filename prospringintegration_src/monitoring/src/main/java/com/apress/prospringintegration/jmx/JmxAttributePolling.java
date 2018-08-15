@@ -20,9 +20,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class JmxAttributePolling {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "jmx/attribute-polling.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("jmx/attribute-polling.xml");
         try {
             Thread.sleep(180000);
         } catch (InterruptedException e) {

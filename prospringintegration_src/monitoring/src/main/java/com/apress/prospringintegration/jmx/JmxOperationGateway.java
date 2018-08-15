@@ -25,15 +25,12 @@ import java.util.Map;
 
 public class JmxOperationGateway {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "jmx/operation-gateway.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("jmx/operation-gateway.xml");
         Map<String, Integer> parameters = new HashMap<String, Integer>();
         parameters.put("p1", 5);
         parameters.put("p2", 7);
         MessageChannel request = (MessageChannel) context.getBean("request");
         request.send(MessageBuilder.withPayload(parameters).build());
-
         try {
             Thread.sleep(180000);
         } catch (InterruptedException e) {

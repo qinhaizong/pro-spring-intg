@@ -20,15 +20,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MonitoringExample {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("classpath:monitoring/monitoring.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:monitoring/monitoring.xml");
         ProcessMessage processMessage = context.getBean("processMessage", ProcessMessage.class);
         for (int i = 0; i < 10; i++) {
             processMessage.processMessage("Process");
             processMessage.checkMessage("Check");
         }
-
         while (true) {
             try {
                 Thread.sleep(60000);

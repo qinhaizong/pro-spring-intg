@@ -22,19 +22,15 @@ import org.springframework.integration.support.MessageBuilder;
 
 public class JmxNotificationPublisher {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "jmx/notification-publisher.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("jmx/notification-publisher.xml");
         try {
             Thread.sleep(60000);
         } catch (InterruptedException e) {
             //do nothing
         }
-
         System.out.println("Sending message");
         MessageChannel send = context.getBean("send", MessageChannel.class);
         send.send(MessageBuilder.withPayload("Sample Message").build());
-
         try {
             Thread.sleep(180000);
         } catch (InterruptedException e) {

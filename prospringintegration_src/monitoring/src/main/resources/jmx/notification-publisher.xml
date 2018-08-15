@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -28,17 +27,12 @@
     http://www.springframework.org/schema/integration/jmx/spring-integration-jmx-2.0.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
-  <context:mbean-export/>
-  <context:mbean-server/>
-
-  <context:component-scan base-package="com.apress.prospringintegration.jmx"/>
-
-  <int:channel id="send"/>
-
-  <jmx:notification-publishing-channel-adapter
-      channel="send"
-      object-name="com.apress.prospringintegration.jmx:name=notificationMBean"
-      default-notification-type="default.notification.type"/>
-
+    <context:mbean-export/>
+    <context:mbean-server/>
+    <context:component-scan base-package="com.apress.prospringintegration.jmx"/>
+    <int:channel id="send"/>
+    <jmx:notification-publishing-channel-adapter
+            channel="send"
+            object-name="com.apress.prospringintegration.jmx:name=notificationMBean"
+            default-notification-type="default.notification.type"/>
 </beans>

@@ -22,12 +22,9 @@ import org.springframework.integration.support.MessageBuilder;
 
 public class JmxOperationInvoking {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "jmx/operation-invoking.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("jmx/operation-invoking.xml");
         MessageChannel add = context.getBean("operation", MessageChannel.class);
         add.send(MessageBuilder.withPayload("Hello").build());
-
         try {
             Thread.sleep(180000);
         } catch (InterruptedException e) {

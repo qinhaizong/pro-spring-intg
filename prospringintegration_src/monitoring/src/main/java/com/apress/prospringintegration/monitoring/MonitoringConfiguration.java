@@ -27,8 +27,7 @@ public class MonitoringConfiguration {
 
     @Bean(name = JAMON_ID)
     public JamonPerformanceMonitorInterceptor jamonPerformanceMonitorInterceptor() {
-        JamonPerformanceMonitorInterceptor interceptor =
-                new JamonPerformanceMonitorInterceptor();
+        JamonPerformanceMonitorInterceptor interceptor = new JamonPerformanceMonitorInterceptor();
         interceptor.setTrackAllInvocations(true);
         interceptor.setUseDynamicLogger(true);
         return interceptor;

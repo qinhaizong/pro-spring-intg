@@ -23,14 +23,10 @@ import org.springframework.integration.support.MessageBuilder;
 
 public class ControlBusApp {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("controlbus/control-bus.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("controlbus/control-bus.xml");
         MessageChannel input = context.getBean("operationChannel", MessageChannel.class);
-
         String message = "@controlBean.performOperation()";
         System.out.println("Sending message: " + message);
-        Message operation = MessageBuilder.withPayload(message).build();
-        input.send(operation);
+        input.send(MessageBuilder.withPayload(message).build());
     }
 }

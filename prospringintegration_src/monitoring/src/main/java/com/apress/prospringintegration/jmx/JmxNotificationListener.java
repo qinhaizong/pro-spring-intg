@@ -20,9 +20,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class JmxNotificationListener {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "jmx/notification-listener.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("jmx/notification-listener.xml");
         try {
             Thread.sleep(180000);
         } catch (InterruptedException e) {

@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -31,21 +30,15 @@
     http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
-  <context:mbean-export/>
-  <context:mbean-server/>
-
-  <context:component-scan base-package="com.apress.prospringintegration.jmx"/>
-
-  <int:channel id="request"/>
-  <int:channel id="reply"/>
-
-  <jmx:operation-invoking-outbound-gateway
-      request-channel="request"
-      object-name="com.apress.prospringintegration.jmx:name=basicMBean,type=BasicMBean"
-      operation-name="add"
-      reply-channel="reply"/>
-
-  <stream:stdout-channel-adapter channel="reply" append-newline="true"/>
-
+    <context:mbean-export/>
+    <context:mbean-server/>
+    <context:component-scan base-package="com.apress.prospringintegration.jmx"/>
+    <int:channel id="request"/>
+    <int:channel id="reply"/>
+    <jmx:operation-invoking-outbound-gateway
+            request-channel="request"
+            object-name="com.apress.prospringintegration.jmx:name=basicMBean,type=BasicMBean"
+            operation-name="add"
+            reply-channel="reply"/>
+    <stream:stdout-channel-adapter channel="reply" append-newline="true"/>
 </beans>

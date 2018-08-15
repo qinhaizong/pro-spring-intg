@@ -22,9 +22,7 @@ import org.springframework.integration.support.MessageBuilder;
 
 public class ErrorHandlingDefault {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("classpath:errorhandling/error-handling-default.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:errorhandling/error-handling-default.xml");
         MessageChannel input = context.getBean("input", MessageChannel.class);
         input.send(MessageBuilder.withPayload("Sample Message").build());
     }

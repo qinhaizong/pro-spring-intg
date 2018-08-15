@@ -30,7 +30,6 @@ public class MonitorMBean {
         String[] header = MonitorFactory.getHeader();
         Object[][] data = MonitorFactory.getData();
         String[] result = new String[data.length];
-
         for (int i = 0; i < data.length; i++) {
             StringBuffer dataValue = new StringBuffer();
             boolean isFirst = true;

@@ -28,25 +28,16 @@ import java.util.Properties;
 
 public class MessageHistoryApp {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext(
-                        "classpath:messagehistory/message-history-context.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:messagehistory/message-history-context.xml");
         MessageChannel input = context.getBean("input", MessageChannel.class);
-
         PollableChannel output = context.getBean("output", PollableChannel.class);
         input.send(MessageBuilder.withPayload("Pro Spring Integration Example").build());
         Message<?> reply = output.receive();
-
-        Iterator<Properties> historyIterator =
-                reply.getHeaders().get(MessageHistory.HEADER_NAME,
-                        MessageHistory.class).iterator();
-
+        Iterator<Properties> historyIterator = reply.getHeaders().get(MessageHistory.HEADER_NAME, MessageHistory.class).iterator();
         while (historyIterator.hasNext()) {
             Properties properties = historyIterator.next();
             System.out.println(properties);
         }
-
         System.out.println("received: " + reply);
     }
 }
