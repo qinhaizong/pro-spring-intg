@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -28,34 +27,25 @@
     http://www.springframework.org/schema/integration/xml/spring-integration-xml.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
-  <context:component-scan base-package="com.apress.prospringintegration.transform"/>
-
-  <int-xml:marshalling-transformer input-channel="input"
-                                   output-channel="xml"
-                                   marshaller="marshaller"
-                                   result-type="StringResult"/>
-
-  <int-xml:unmarshalling-transformer id="defaultUnmarshaller"
-                                     input-channel="xml-string"
-                                     output-channel="output"
-                                     unmarshaller="marshaller"/>
-
-  <int:object-to-string-transformer input-channel="xml" output-channel="xml-string"/>
-
-  <int:logging-channel-adapter id="logger" log-full-message="true" level="INFO"/>
-
-  <int:channel id="input"/>
-
-  <int:channel id="xml-string"/>
-
-  <int:channel id="xml">
-    <int:interceptors>
-      <int:wire-tap channel="logger"/>
-    </int:interceptors>
-  </int:channel>
-
-  <int:channel id="output">
-    <int:queue capacity="10"/>
-  </int:channel>
+    <context:component-scan base-package="com.apress.prospringintegration.transform"/>
+    <int-xml:marshalling-transformer input-channel="input"
+                                     output-channel="xml"
+                                     marshaller="marshaller"
+                                     result-type="StringResult"/>
+    <int-xml:unmarshalling-transformer id="defaultUnmarshaller"
+                                       input-channel="xml-string"
+                                       output-channel="output"
+                                       unmarshaller="marshaller"/>
+    <int:object-to-string-transformer input-channel="xml" output-channel="xml-string"/>
+    <int:logging-channel-adapter id="logger" log-full-message="true"/>
+    <int:channel id="input"/>
+    <int:channel id="xml-string"/>
+    <int:channel id="xml">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    <int:channel id="output">
+        <int:queue capacity="10"/>
+    </int:channel>
 </beans>

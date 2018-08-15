@@ -30,16 +30,13 @@ public class HeaderInterceptor {
     public Customer map(Map<String, String> message,
                         @Header int count, @Headers Map<String, Object> headerMap) {
         Customer customer = new Customer();
-
         customer.setFirstName(message.get("firstName"));
         customer.setLastName(message.get("lastName"));
         customer.setAddress(message.get("address"));
         customer.setCity(message.get("city"));
         customer.setState(message.get("state"));
         customer.setZip(message.get("zip"));
-
         System.out.println("Count:" + count);
-
         for (String key : headerMap.keySet()) {
             System.out.println("Key: " + key + "  Value: " + headerMap.get(key));
         }

@@ -27,12 +27,9 @@ import java.util.Map;
 
 public class PayloadTypeTransformer {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("classpath:payload-type-transformer.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:payload-type-transformer.xml");
         MessageChannel input = context.getBean("input", MessageChannel.class);
         PollableChannel output = context.getBean("output", PollableChannel.class);
-
         Map<String, String> customerMap = new HashMap<String, String>();
         customerMap.put("firstName", "John");
         customerMap.put("lastName", "Smith");
@@ -40,11 +37,7 @@ public class PayloadTypeTransformer {
         customerMap.put("city", "Los Angeles");
         customerMap.put("state", "CA");
         customerMap.put("zip", "90064");
-
-        Message<Map<String, String>> message = MessageBuilder.withPayload(customerMap).build();
-        input.send(message);
-
-        Message<?> reply = output.receive();
-        System.out.println("received: " + reply.getPayload());
+        input.send(MessageBuilder.withPayload(customerMap).build());
+        System.out.println("received: " + output.receive().getPayload());
     }
 }

@@ -30,14 +30,12 @@ public class IntegrationConfiguration {
         JmsTemplate jmsTemplate = new JmsTemplate();
         jmsTemplate.setConnectionFactory(cachingConnectionFactory());
         jmsTemplate.setDefaultDestinationName("transformation.example.queue");
-
         return jmsTemplate;
     }
 
     @Bean
     public CachingConnectionFactory cachingConnectionFactory() {
-        CachingConnectionFactory cachingConnectionFactory =
-                new CachingConnectionFactory();
+        CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory();
         cachingConnectionFactory.setTargetConnectionFactory(activeMQConnectionFactory());
         cachingConnectionFactory.setSessionCacheSize(10);
         cachingConnectionFactory.setCacheProducers(false);
@@ -46,8 +44,7 @@ public class IntegrationConfiguration {
 
     @Bean
     public ActiveMQConnectionFactory activeMQConnectionFactory() {
-        ActiveMQConnectionFactory activeMQConnectionFactory =
-                new ActiveMQConnectionFactory();
+        ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory();
         activeMQConnectionFactory.setBrokerURL("vm://localhost");
         return activeMQConnectionFactory;
     }

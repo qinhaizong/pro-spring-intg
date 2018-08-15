@@ -26,7 +26,6 @@ public class CustomerConverter implements Converter<Map<String, String>, Custome
     @Override
     public Customer convert(Map<String, String> customerMap) {
         Customer customer = new Customer();
-
         customer.setFirstName(customerMap.get("firstName"));
         customer.setLastName(customerMap.get("lastName"));
         customer.setAddress(customerMap.get("address"));

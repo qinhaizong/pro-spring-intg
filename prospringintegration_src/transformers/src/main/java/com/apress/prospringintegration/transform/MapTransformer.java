@@ -24,12 +24,9 @@ import org.springframework.integration.support.MessageBuilder;
 
 public class MapTransformer {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("classpath:map-transformer.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:map-transformer.xml");
         MessageChannel input = context.getBean("input", MessageChannel.class);
         PollableChannel output = context.getBean("output", PollableChannel.class);
-
         Customer customer = new Customer();
         customer.setFirstName("John");
         customer.setLastName("Smith");
@@ -37,13 +34,8 @@ public class MapTransformer {
         customer.setCity("Los Angeles");
         customer.setState("CA");
         customer.setZip("90064");
-
         System.out.println("toString(): " + customer.toString());
-
-        Message<Customer> message = MessageBuilder.withPayload(customer).build();
-        input.send(message);
-
-        Message<?> reply = output.receive();
-        System.out.println("received: " + reply.getPayload());
+        input.send(MessageBuilder.withPayload(customer).build());
+        System.out.println("received: " + output.receive().getPayload());
     }
 }

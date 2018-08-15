@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -28,40 +27,29 @@
       http://www.springframework.org/schema/integration/jms/spring-integration-jms-2.0.xsd
       http://www.springframework.org/schema/context
       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
-  <context:component-scan base-package="com.apress.prospringintegration.transform"/>
-
-  <jms:message-driven-channel-adapter
-      channel="map"
-      extract-payload="true"
-      connection-factory="cachingConnectionFactory"
-      destination-name="transformation.example.queue"/>
-
-  <int:map-to-object-transformer input-channel="map"
-                                 output-channel="json"
-                                 type="com.apress.prospringintegration.transform.Customer"/>
-
-  <int:object-to-json-transformer input-channel="json"
-                                  output-channel="output"/>
-
-  <int:logging-channel-adapter id="logger"
-                               log-full-message="true"
-                               level="INFO"/>
-
-  <int:channel id="json">
-    <int:interceptors>
-      <int:wire-tap channel="logger"/>
-    </int:interceptors>
-  </int:channel>
-
-  <int:channel id="map">
-    <int:interceptors>
-      <int:wire-tap channel="logger"/>
-    </int:interceptors>
-  </int:channel>
-
-  <int:channel id="output">
-    <int:queue capacity="10"/>
-  </int:channel>
-
+    <context:component-scan base-package="com.apress.prospringintegration.transform"/>
+    <jms:message-driven-channel-adapter
+            channel="map"
+            connection-factory="cachingConnectionFactory"
+            destination-name="transformation.example.queue"/>
+    <int:map-to-object-transformer input-channel="map"
+                                   output-channel="json"
+                                   type="com.apress.prospringintegration.transform.Customer"/>
+    <int:object-to-json-transformer input-channel="json"
+                                    output-channel="output"/>
+    <int:logging-channel-adapter id="logger"
+                                 log-full-message="true"/>
+    <int:channel id="json">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    <int:channel id="map">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    <int:channel id="output">
+        <int:queue capacity="10"/>
+    </int:channel>
 </beans>

@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -22,13 +21,9 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/integration
     http://www.springframework.org/schema/integration/spring-integration-2.0.xsd">
-
-  <int:object-to-string-transformer input-channel="input" output-channel="output"/>
-
-  <int:channel id="input"/>
-
-  <int:channel id="output">
-    <int:queue capacity="10"/>
-  </int:channel>
-
+    <int:object-to-string-transformer input-channel="input" output-channel="output"/>
+    <int:channel id="input"/>
+    <int:channel id="output">
+        <int:queue capacity="10"/>
+    </int:channel>
 </beans>

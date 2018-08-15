@@ -28,11 +28,8 @@ import javax.jms.Session;
 
 public class IntegrationTransformer {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("classpath:integration-transformer.xml");
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:integration-transformer.xml");
         JmsTemplate jmsTemplate = context.getBean("jmsTemplate", JmsTemplate.class);
-
         jmsTemplate.send(new MessageCreator() {
 
             @Override
@@ -48,9 +45,7 @@ public class IntegrationTransformer {
                 return message;
             }
         });
-
         PollableChannel output = (PollableChannel) context.getBean("output");
-        Message<?> reply = output.receive();
-        System.out.println("received: " + reply.getPayload());
+        System.out.println("received: " + output.receive().getPayload());
     }
 }

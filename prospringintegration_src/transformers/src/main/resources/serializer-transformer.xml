@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -22,27 +21,16 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/integration
     http://www.springframework.org/schema/integration/spring-integration-2.0.xsd">
-
-  <int:payload-serializing-transformer input-channel="input"
-                                       output-channel="byte-array"/>
-
-  <int:payload-deserializing-transformer input-channel="byte-array"
-                                         output-channel="output"/>
-
-  <int:logging-channel-adapter id="logger"
-                               log-full-message="true"
-                               level="INFO"/>
-
-  <int:channel id="input"/>
-
-  <int:channel id="byte-array">
-    <int:interceptors>
-      <int:wire-tap channel="logger"/>
-    </int:interceptors>
-  </int:channel>
-
-  <int:channel id="output">
-    <int:queue capacity="10"/>
-  </int:channel>
-
+    <int:payload-serializing-transformer input-channel="input" output-channel="byte-array"/>
+    <int:payload-deserializing-transformer input-channel="byte-array" output-channel="output"/>
+    <int:logging-channel-adapter id="logger" log-full-message="true"/>
+    <int:channel id="input"/>
+    <int:channel id="byte-array">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    <int:channel id="output">
+        <int:queue capacity="10"/>
+    </int:channel>
 </beans>
