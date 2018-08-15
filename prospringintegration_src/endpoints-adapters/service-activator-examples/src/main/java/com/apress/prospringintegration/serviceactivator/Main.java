@@ -24,23 +24,14 @@ public class Main {
 
     public static void main(String[] args)
             throws Exception {
-        String contextName = "service-activator.xml";
-
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
-
-        ProblemReporter problemReporter =
-                applicationContext.getBean(ProblemReporter.class);
-        TicketGenerator ticketGenerator =
-                applicationContext.getBean(TicketGenerator.class);
-
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("service-activator.xml");
+        ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
+        TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
         while (true) {
             List<Ticket> tickets = ticketGenerator.createTickets();
             for (Ticket ticket : tickets) {
                 problemReporter.openTicket(ticket);
             }
-
             Thread.sleep(500);
         }
     }

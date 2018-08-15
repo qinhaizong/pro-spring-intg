@@ -34,7 +34,6 @@ public class TicketGenerator {
 
     public List<Ticket> createTickets() {
         List<Ticket> tickets = new ArrayList<Ticket>();
-
         tickets.add(createLowPriorityTicket());
         tickets.add(createLowPriorityTicket());
         tickets.add(createLowPriorityTicket());
@@ -55,7 +54,6 @@ public class TicketGenerator {
         tickets.add(createEmergencyTicket());
         tickets.add(createEmergencyTicket());
         tickets.add(createEmergencyTicket());
-
         return tickets;
     }
 
@@ -85,7 +83,6 @@ public class TicketGenerator {
         ticket.setPriority(priority);
         ticket.setIssueDateTime(GregorianCalendar.getInstance());
         ticket.setDescription(description);
-
         return ticket;
     }
 }
