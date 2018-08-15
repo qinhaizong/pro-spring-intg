@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:int="http://www.springframework.org/schema/integration"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -31,28 +30,17 @@
 		http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/integration/security
 		http://www.springframework.org/schema/integration/security/spring-integration-security-2.0.xsd">
-
-  <context:component-scan base-package="com.apress.prospringintegration.security"/>
-
-  <security:authentication-manager alias="authenticationManager">
-    <security:authentication-provider user-service-ref="userDetailsService"/>
-  </security:authentication-manager>
-
-  <security:user-service id="userDetailsService">
-    <security:user name="secureuser" password="password"
-                   authorities="ROLE_USER, ROLE_ADMIN"/>
-    <security:user name="unsecureuser" password="password"
-                   authorities="ROLE_USER"/>
-  </security:user-service>
-
-  <si-security:secured-channels>
-    <si-security:access-policy pattern="secure.*"
-                               send-access="ROLE_ADMIN, ROLE_PRESIDENT"/>
-  </si-security:secured-channels>
-
-  <int:logging-channel-adapter channel="secureCustomerData"
-                               log-full-message="true"/>
-
-  <int:channel id="secureCustomerData"/>
-
+    <context:component-scan base-package="com.apress.prospringintegration.security"/>
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider user-service-ref="userDetailsService"/>
+    </security:authentication-manager>
+    <security:user-service id="userDetailsService">
+        <security:user name="secureuser" password="password" authorities="ROLE_USER, ROLE_ADMIN"/>
+        <security:user name="unsecureuser" password="password" authorities="ROLE_USER"/>
+    </security:user-service>
+    <si-security:secured-channels>
+        <si-security:access-policy pattern="secure.*" send-access="ROLE_ADMIN, ROLE_PRESIDENT"/>
+    </si-security:secured-channels>
+    <int:logging-channel-adapter channel="secureCustomerData" log-full-message="true"/>
+    <int:channel id="secureCustomerData"/>
 </beans>

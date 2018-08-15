@@ -31,9 +31,7 @@ public class SecurityConfiguration {
     public AffirmativeBased accessDecisionManager() {
         AffirmativeBased affirmativeBased = new AffirmativeBased();
         affirmativeBased.setAllowIfAllAbstainDecisions(true);
-        affirmativeBased.setDecisionVoters(
-                Arrays.asList((AccessDecisionVoter) new RoleVoter()));
-
+        affirmativeBased.setDecisionVoters(Arrays.asList((AccessDecisionVoter) new RoleVoter()));
         return affirmativeBased;
     }
 }

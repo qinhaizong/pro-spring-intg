@@ -29,15 +29,9 @@ import org.springframework.util.CollectionUtils;
 
 public class SecurityMain {
 
-    public static void main(String[] args) throws Exception {
-
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("classpath:secure-channel.xml");
-        context.start();
-
-        MessageChannel channel =
-                context.getBean("secureCustomerData", MessageChannel.class);
-
+    public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:secure-channel.xml");
+        MessageChannel channel = context.getBean("secureCustomerData", MessageChannel.class);
         //Secure user with privileges
         login("secureuser", "password", "ROLE_ADMIN");
         try {
@@ -45,7 +39,6 @@ public class SecurityMain {
         } catch (Exception ex) {
             System.out.println("Unable to send message for secureuser");
         }
-
         //Secure user with privileges
         login("unsecureuser", "password", "ROLE_USER");
         try {
