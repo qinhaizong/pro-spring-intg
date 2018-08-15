@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -28,22 +27,11 @@
   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
   http://www.springframework.org/schema/context
   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
-  <description>Example configuration to get you started.</description>
-
-  <context:component-scan base-package="com.apress.prospringintegration"></context:component-scan>
-
-  <int:channel id="input"></int:channel>
-  <int:channel id="output"></int:channel>
-
-  <int-jms:outbound-channel-adapter id="jmsOut"
-                                    channel="input" destination-name="test.queue">
-  </int-jms:outbound-channel-adapter>
-
-  <int-jms:message-driven-channel-adapter
-      id="jmsIn" channel="output" destination-name="test.queue"/>
-
-  <int:service-activator input-channel="output"
-                         ref="jmsHandler" id="messageHandler">
-  </int:service-activator>
+    <description>Example configuration to get you started.</description>
+    <context:component-scan base-package="com.apress.prospringintegration"/>
+    <int:channel id="input"/>
+    <int:channel id="output"/>
+    <int-jms:outbound-channel-adapter id="jmsOut" channel="input" destination-name="test.queue"/>
+    <int-jms:message-driven-channel-adapter id="jmsIn" channel="output" destination-name="test.queue"/>
+    <int:service-activator input-channel="output" ref="jmsHandler" id="messageHandler"/>
 </beans>
