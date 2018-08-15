@@ -19,7 +19,6 @@ package com.apress.prospringintegration;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.Message;
 import org.springframework.integration.MessageChannel;
 import org.springframework.integration.core.PollableChannel;
 import org.springframework.integration.support.MessageBuilder;
@@ -29,14 +28,10 @@ public class JmsApp {
     private static final Log LOG = LogFactory.getLog(JmsApp.class);
 
     public static void main(String[] args) {
-        String configLocation = "jms-spring-context.xml";
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(configLocation);
-        context.start();
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("jms-spring-context.xml");
         MessageChannel input = (MessageChannel) context.getBean("input");
         PollableChannel output = (PollableChannel) context.getBean("output");
         input.send(MessageBuilder.withPayload("Pro Spring Integration Example").build());
-        Message<?> reply = output.receive();
-        LOG.info("received: " + reply);
+        LOG.info("received: " + output.receive());
     }
 }
