@@ -27,26 +27,14 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("event-driven-consumer.xml");
-        applicationContext.start();
-
-        ProblemReporter problemReporter =
-                applicationContext.getBean(ProblemReporter.class);
-        TicketGenerator ticketGenerator =
-                applicationContext.getBean(TicketGenerator.class);
-        TicketMessageHandler ticketMessageHandler =
-                applicationContext.getBean(TicketMessageHandler.class);
-
-        DirectChannel channel =
-                applicationContext.getBean("ticketChannel", DirectChannel.class);
-
-        EventDrivenConsumer eventDrivenConsumer =
-                new EventDrivenConsumer(channel, ticketMessageHandler);
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("event-driven-consumer.xml");
+        ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
+        TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
+        TicketMessageHandler ticketMessageHandler = applicationContext.getBean(TicketMessageHandler.class);
+        DirectChannel channel = applicationContext.getBean("ticketChannel", DirectChannel.class);
+        EventDrivenConsumer eventDrivenConsumer = new EventDrivenConsumer(channel, ticketMessageHandler);
         eventDrivenConsumer.start();
-
         List<Ticket> tickets = ticketGenerator.createTickets();
-
         int count = 0;
         while (count++ < 5) {
             for (Ticket ticket : tickets) {

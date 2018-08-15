@@ -19,25 +19,16 @@ package com.apress.prospringintegration.endpoints.consumerendpointfactory;
 import com.apress.prospringintegration.endpoints.core.Ticket;
 import com.apress.prospringintegration.endpoints.core.TicketGenerator;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.channel.DirectChannel;
-import org.springframework.integration.endpoint.EventDrivenConsumer;
 
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("consumer-endpoint-factory.xml");
-        applicationContext.start();
-
-        ProblemReporter problemReporter =
-                applicationContext.getBean(ProblemReporter.class);
-        TicketGenerator ticketGenerator =
-                applicationContext.getBean(TicketGenerator.class);
-
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("consumer-endpoint-factory.xml");
+        ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
+        TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
         List<Ticket> tickets = ticketGenerator.createTickets();
-
         int count = 0;
         while (count++ < 5) {
             for (Ticket ticket : tickets) {

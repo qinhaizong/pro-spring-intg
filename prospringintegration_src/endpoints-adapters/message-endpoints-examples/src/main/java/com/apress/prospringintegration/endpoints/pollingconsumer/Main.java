@@ -30,40 +30,25 @@ public class Main {
     private final static int RECEIVE_TIMEOUT = 1000;
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("polling-consumer.xml");
-        applicationContext.start();
-
-        ProblemReporter problemReporter =
-                applicationContext.getBean(ProblemReporter.class);
-        TicketMessageHandler ticketMessageHandler =
-                applicationContext.getBean(TicketMessageHandler.class);
-        TicketGenerator ticketGenerator =
-                applicationContext.getBean(TicketGenerator.class);
-
-        QueueChannel channel =
-                applicationContext.getBean("ticketChannel", QueueChannel.class);
-
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("polling-consumer.xml");
+        ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
+        TicketMessageHandler ticketMessageHandler = applicationContext.getBean(TicketMessageHandler.class);
+        TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
+        QueueChannel channel = applicationContext.getBean("ticketChannel", QueueChannel.class);
         // Define the polling consumer
-        PollingConsumer ticketConsumer =
-                new PollingConsumer(channel, ticketMessageHandler);
+        PollingConsumer ticketConsumer = new PollingConsumer(channel, ticketMessageHandler);
         ticketConsumer.setReceiveTimeout(RECEIVE_TIMEOUT);
         ticketConsumer.setBeanFactory(applicationContext);
-
         // Setup the poller using periodic trigger
         PeriodicTrigger periodicTrigger = new PeriodicTrigger(1000);
         periodicTrigger.setInitialDelay(5000);
         periodicTrigger.setFixedRate(false);
-
         PollerMetadata pollerMetadata = new PollerMetadata();
         pollerMetadata.setTrigger(periodicTrigger);
         pollerMetadata.setMaxMessagesPerPoll(3);
-
         ticketConsumer.setPollerMetadata(pollerMetadata);
-
         // Starts the polling consumer in the other thread
         ticketConsumer.start();
-
         // Generates messages and sends to the channel
         List<Ticket> tickets = ticketGenerator.createTickets();
         while (true) {
