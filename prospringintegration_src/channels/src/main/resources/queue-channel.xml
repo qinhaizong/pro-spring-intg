@@ -24,8 +24,7 @@
         <property name="emergencyTicketSelector" ref="emergencyTicketSelector"/>
         <property name="channel" ref="ticketChannel"/>
     </bean>
-    <bean id="emergencyTicketSelector"
-          class="com.apress.prospringintegration.channels.queuechannel.EmergencyTicketSelector"/>
+    <bean id="emergencyTicketSelector" class="com.apress.prospringintegration.channels.queuechannel.EmergencyTicketSelector"/>
     <bean class="com.apress.prospringintegration.channels.queuechannel.ProblemReporter">
         <property name="channel" ref="ticketChannel"/>
     </bean>

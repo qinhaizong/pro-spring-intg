@@ -16,11 +16,14 @@
 
 package com.apress.prospringintegration.channels.queuechannel;
 
-import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.Message;
 import org.springframework.integration.channel.QueueChannel;
 
 public class TicketReceiver implements Runnable {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TicketReceiver.class);
 
     final static int RECEIVE_TIMEOUT = 1000;
 
@@ -35,7 +38,7 @@ public class TicketReceiver implements Runnable {
         while (true) {
             ticketMessage = channel.receive(RECEIVE_TIMEOUT);
             if (ticketMessage != null) {
-                handleTicket((Ticket) ticketMessage.getPayload());
+                LOGGER.info("Received ticket - " + ticketMessage.getPayload().toString());
             } else {
                 try {
                     /** Handle some other tasks **/
@@ -45,10 +48,6 @@ public class TicketReceiver implements Runnable {
                 }
             }
         }
-    }
-
-    void handleTicket(Ticket ticket) {
-        System.out.println("Received ticket - " + ticket.toString());
     }
 
     @Override

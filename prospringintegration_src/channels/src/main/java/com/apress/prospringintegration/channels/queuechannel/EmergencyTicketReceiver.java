@@ -16,7 +16,8 @@
 
 package com.apress.prospringintegration.channels.queuechannel;
 
-import com.apress.prospringintegration.channels.core.Ticket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.Message;
 import org.springframework.integration.core.MessageSelector;
 import org.springframework.util.Assert;
@@ -24,6 +25,8 @@ import org.springframework.util.Assert;
 import java.util.List;
 
 public class EmergencyTicketReceiver extends TicketReceiver {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmergencyTicketReceiver.class);
 
     private MessageSelector emergencyTicketSelector;
 
@@ -33,13 +36,16 @@ public class EmergencyTicketReceiver extends TicketReceiver {
 
     @Override
     public void handleTicketMessage() {
-        Message<?> ticketMessage = null;
+        Message<?> ticketMessage;
         while (true) {
             List<Message<?>> emergencyTicketMessages = channel.purge(emergencyTicketSelector);
-            handleEmergencyTickets(emergencyTicketMessages);
+            Assert.notNull(emergencyTicketMessages);
+            for (Message<?> ticketMessage1 : emergencyTicketMessages) {
+                LOGGER.info("Received ticket - " + ticketMessage1.getPayload().toString());
+            }
             ticketMessage = channel.receive(RECEIVE_TIMEOUT);
             if (ticketMessage != null) {
-                handleTicket((Ticket) ticketMessage.getPayload());
+                LOGGER.info("Received ticket - " + ticketMessage.getPayload().toString());
             } else {
                 try {
                     /** Handle some other tasks **/
@@ -51,10 +57,4 @@ public class EmergencyTicketReceiver extends TicketReceiver {
         }
     }
 
-    void handleEmergencyTickets(List<Message<?>> highPriorityTicketMessages) {
-        Assert.notNull(highPriorityTicketMessages);
-        for (Message<?> ticketMessage : highPriorityTicketMessages) {
-            handleTicket((Ticket) ticketMessage.getPayload());
-        }
-    }
 }

@@ -20,8 +20,6 @@ import com.apress.prospringintegration.channels.core.Ticket;
 import com.apress.prospringintegration.channels.core.TicketGenerator;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.List;
-
 public class EmergencyTicketMain {
 
     public static void main(String[] args) {
@@ -29,11 +27,9 @@ public class EmergencyTicketMain {
         ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
         EmergencyTicketReceiver ticketReceiver = applicationContext.getBean(EmergencyTicketReceiver.class);
         TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
-        List<Ticket> tickets = ticketGenerator.createTickets();
-        for (Ticket ticket : tickets) {
+        for (Ticket ticket : ticketGenerator.createTickets()) {
             problemReporter.openTicket(ticket);
         }
-        Thread consumerThread = new Thread(ticketReceiver);
-        consumerThread.start();
+        new Thread(ticketReceiver).start();
     }
 }

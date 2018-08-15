@@ -20,19 +20,16 @@ import com.apress.prospringintegration.channels.core.Ticket;
 import com.apress.prospringintegration.channels.core.TicketGenerator;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.List;
-
 public class Main {
-    public static void main(String[] args) throws Throwable {
+
+    public static void main(String[] args) {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("rendezvous-channel.xml");
         ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
         TicketReceiver ticketReceiver = applicationContext.getBean(TicketReceiver.class);
         TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
         // start *before* message publication because it'll block on put
-        Thread consumerThread = new Thread(ticketReceiver);
-        consumerThread.start();
-        List<Ticket> tickets = ticketGenerator.createTickets();
-        for (Ticket ticket : tickets) {
+        new Thread(ticketReceiver).start();
+        for (Ticket ticket : ticketGenerator.createTickets()) {
             problemReporter.openTicket(ticket);
         }
     }
