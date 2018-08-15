@@ -24,14 +24,9 @@ import java.util.concurrent.TimeUnit;
 
 public class MainAsyncGateway {
     public static void main(String[] args) throws Exception {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("gateway-async.xml");
-
-        TicketIssuerAsync ticketIssuerAsync =
-                context.getBean("ticketIssueGatewayAsync", TicketIssuerAsync.class);
-
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("gateway-async.xml");
+        TicketIssuerAsync ticketIssuerAsync = context.getBean("ticketIssueGatewayAsync", TicketIssuerAsync.class);
         Future<Ticket> result = ticketIssuerAsync.issueTicket(100L);
-
         Ticket ticket = result.get(1000, TimeUnit.SECONDS);
         System.out.println("Ticket: " + ticket + " was issued on: " +
                 ticket.getIssueDateTime() + " with ticket id: " +

@@ -21,13 +21,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MainSimpleGateway {
 
-    public static void main(String[] args) throws Exception {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("gateway-simple.xml");
-        
-        TicketIssuer ticketIssuer =
-                context.getBean("ticketIssueGateway", TicketIssuer.class);
-
+    public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("gateway-simple.xml");
+        TicketIssuer ticketIssuer = context.getBean("ticketIssueGateway", TicketIssuer.class);
         Ticket ticket = ticketIssuer.issueTicket(100L);
         System.out.println("Ticket: " + ticket + " was issued on: " +
                 ticket.getIssueDateTime() + " with ticket id: " +

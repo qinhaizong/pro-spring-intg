@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -25,35 +24,26 @@
     http://www.springframework.org/schema/context/spring-context-3.0.xsd
     http://www.springframework.org/schema/integration
     http://www.springframework.org/schema/integration/spring-integration-2.0.xsd">
-
-  <context:component-scan base-package="com.apress.prospringintegration.gateways"/>
-
-  <int:channel id="ticketRequests">
-    <int:interceptors>
-      <int:wire-tap channel="logger"/>
-    </int:interceptors>
-  </int:channel>
-
-  <int:channel id="ticketReplies">
-    <int:queue capacity="10"/>
-    <int:interceptors>
-      <int:wire-tap channel="logger"/>
-    </int:interceptors>
-  </int:channel>
-
-  <int:channel id="request"/>
-  <int:channel id="reply"/>
-
-  <int:logging-channel-adapter id="logger" level="INFO"/>
-
-  <int:gateway id="ticketIssueGateway"
-               default-request-channel="request"
-               default-reply-channel="reply"
-               service-interface=
-                   "com.apress.prospringintegration.gateways.client.TicketIssuer"/>
-
-  <int:service-activator input-channel="ticketRequests"
-                         output-channel="ticketReplies"
-                         ref="ticketIssuerService"/>
-
+    <context:component-scan base-package="com.apress.prospringintegration.gateways"/>
+    <int:channel id="ticketRequests">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    <int:channel id="ticketReplies">
+        <int:queue capacity="10"/>
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+    <int:channel id="request"/>
+    <int:channel id="reply"/>
+    <int:logging-channel-adapter id="logger"/>
+    <int:gateway id="ticketIssueGateway"
+                 default-request-channel="request"
+                 default-reply-channel="reply"
+                 service-interface="com.apress.prospringintegration.gateways.client.TicketIssuer"/>
+    <int:service-activator input-channel="ticketRequests"
+                           output-channel="ticketReplies"
+                           ref="ticketIssuerService"/>
 </beans>
