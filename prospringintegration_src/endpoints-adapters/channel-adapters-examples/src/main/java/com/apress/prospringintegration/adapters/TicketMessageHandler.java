@@ -27,18 +27,13 @@ import org.springframework.stereotype.Component;
 public class TicketMessageHandler implements MessageHandler {
 
     @Override
-    public void handleMessage(Message<?> message)
-            throws MessageRejectedException, MessageHandlingException, MessageDeliveryException {
+    public void handleMessage(Message<?> message) throws MessageHandlingException, MessageDeliveryException {
         Object payload = message.getPayload();
-
         if (payload instanceof Ticket) {
-            handleTicket((Ticket) payload);
+            System.out.println("Received ticket - " + payload.toString());
         } else {
             throw new MessageRejectedException(message, "Unknown data type has been received.");
         }
     }
 
-    void handleTicket(Ticket ticket) {
-        System.out.println("Received ticket - " + ticket.toString());
-    }
 }

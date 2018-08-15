@@ -32,10 +32,8 @@ public class ProblemReporter {
         if (tickets == null || tickets.size() == 0) {
             tickets = ticketGenerator.createTickets();
         }
-
         Ticket ticket = tickets.remove(0);
         System.out.println("Ticket Sent - " + ticket.toString());
-
         return ticket;
     }
 }

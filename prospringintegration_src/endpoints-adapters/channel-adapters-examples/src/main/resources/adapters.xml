@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -25,27 +24,18 @@
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
-  <context:component-scan base-package="com.apress.prospringintegration.adapters"/>
-
-  <int:channel id="ticketChannel">
-    <int:queue capacity="50"/>
-  </int:channel>
-
-  <int:inbound-channel-adapter channel="ticketChannel"
-                               ref="problemReporter"
-                               method="openTickets">
-    <int:poller>
-      <int:interval-trigger interval="500"/>
-    </int:poller>
-  </int:inbound-channel-adapter>
-
-  <int:outbound-channel-adapter channel="ticketChannel"
-                                ref="ticketMessageHandler"
-                                method="handleMessage">
-    <int:poller>
-      <int:interval-trigger interval="1000"/>
-    </int:poller>
-  </int:outbound-channel-adapter>
-
+    <context:component-scan base-package="com.apress.prospringintegration.adapters"/>
+    <int:channel id="ticketChannel">
+        <int:queue capacity="50"/>
+    </int:channel>
+    <int:inbound-channel-adapter channel="ticketChannel" ref="problemReporter" method="openTickets">
+        <int:poller>
+            <int:interval-trigger interval="500"/>
+        </int:poller>
+    </int:inbound-channel-adapter>
+    <int:outbound-channel-adapter channel="ticketChannel" ref="ticketMessageHandler" method="handleMessage">
+        <int:poller>
+            <int:interval-trigger interval="1000"/>
+        </int:poller>
+    </int:outbound-channel-adapter>
 </beans>
