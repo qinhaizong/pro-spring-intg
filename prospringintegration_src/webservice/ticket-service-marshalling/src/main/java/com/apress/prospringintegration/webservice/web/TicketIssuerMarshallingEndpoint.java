@@ -34,8 +34,7 @@ public class TicketIssuerMarshallingEndpoint {
     public TicketResponse handleRequest(TicketRequest tr) throws Exception {
         System.out.println("TicketRequest: " + tr);
         TicketResponse ticketResponse = new TicketResponse();
-        Ticket t = ticketIssuerService.issueTicket(tr.getDescription(),
-                tr.getPriority().name());
+        Ticket t = ticketIssuerService.issueTicket(tr.getDescription(), tr.getPriority().name());
         ticketResponse.setTicket(t);
         return ticketResponse;
     }

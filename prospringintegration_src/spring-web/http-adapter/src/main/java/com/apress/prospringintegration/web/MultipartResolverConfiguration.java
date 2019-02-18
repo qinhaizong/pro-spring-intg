@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.apress.prospringintegration.web;
 
 import org.springframework.context.annotation.Bean;
@@ -28,4 +27,5 @@ public class MultipartResolverConfiguration {
     public MultipartResolver multipartResolver() {
         return new CommonsMultipartResolver();
     }
+
 }

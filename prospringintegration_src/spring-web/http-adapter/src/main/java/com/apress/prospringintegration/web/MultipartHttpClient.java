@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.apress.prospringintegration.web;
 
 import org.springframework.core.io.ClassPathResource;
@@ -26,17 +25,16 @@ import org.springframework.web.client.RestTemplate;
 public class MultipartHttpClient {
 
     public static void main(String[] args) {
-        RestTemplate template = new RestTemplate();
         String uri = "http://localhost:8080/http-adapter-1.0.0/inboundMultipartAdapter.html";
-        Resource picture =
-                new ClassPathResource("com/apress/prospringintegration/web/test.png");
+        Resource picture = new ClassPathResource("com/apress/prospringintegration/web/test.png");
         MultiValueMap map = new LinkedMultiValueMap();
         map.add("name", "John Smith");
         map.add("picture", picture);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("multipart", "form-data"));
         HttpEntity request = new HttpEntity(map, headers);
-        ResponseEntity<?> httpResponse = template.exchange(uri, HttpMethod.POST, request, null);
+        ResponseEntity<?> httpResponse = new RestTemplate().exchange(uri, HttpMethod.POST, request, null);
         System.out.println("Status: " + httpResponse.getStatusCode().name());
     }
+
 }

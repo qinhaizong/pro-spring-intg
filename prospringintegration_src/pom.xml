@@ -36,7 +36,7 @@
         <module>social</module>
         <module>messaging</module>
         <module>intro-si</module>
-        <module>spring-enterprise</module>
+        <!--<module>spring-enterprise</module>-->
         <module>spring-web</module>
         <module>talk-to-metal</module>
         <!--<module>alternatives</module>-->

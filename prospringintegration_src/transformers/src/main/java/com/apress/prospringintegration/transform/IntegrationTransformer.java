@@ -13,11 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.apress.prospringintegration.transform;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.Message;
 import org.springframework.integration.core.PollableChannel;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -27,6 +25,7 @@ import javax.jms.MapMessage;
 import javax.jms.Session;
 
 public class IntegrationTransformer {
+
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:integration-transformer.xml");
         JmsTemplate jmsTemplate = context.getBean("jmsTemplate", JmsTemplate.class);
@@ -48,4 +47,5 @@ public class IntegrationTransformer {
         PollableChannel output = (PollableChannel) context.getBean("output");
         System.out.println("received: " + output.receive().getPayload());
     }
+
 }

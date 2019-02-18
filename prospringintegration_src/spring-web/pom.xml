@@ -15,7 +15,7 @@
 
     <modules>
         <!--<module>comet-adapter-example</module>-->
-        <module>spring-flex</module>
+        <!--<module>spring-flex</module>-->
         <module>http-adapter</module>
     </modules>
 

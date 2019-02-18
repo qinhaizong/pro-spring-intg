@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.apress.prospringintegration.web;
 
 import org.springframework.integration.annotation.ServiceActivator;
@@ -27,8 +26,7 @@ import java.util.LinkedList;
 public class MultipartReceiver {
 
     @ServiceActivator
-    public void handleMultipartRequest(
-            LinkedMultiValueMap<String, Object> multipartRequest) {
+    public void handleMultipartRequest(LinkedMultiValueMap<String, Object> multipartRequest) {
         System.out.println("Received multipart request: " + multipartRequest);
         for (String elementName : multipartRequest.keySet()) {
             if (elementName.equals("name")) {
@@ -38,10 +36,9 @@ public class MultipartReceiver {
                     System.out.println("Name: " + name);
                 }
             } else if (elementName.equals("picture")) {
-                System.out.println("Picture as UploadedMultipartFile: "
-                        + ((UploadedMultipartFile) multipartRequest.getFirst("picture"))
-                        .getOriginalFilename());
+                System.out.println("Picture as UploadedMultipartFile: " + ((UploadedMultipartFile) multipartRequest.getFirst("picture")).getOriginalFilename());
             }
         }
     }
+
 }

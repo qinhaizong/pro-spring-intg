@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
@@ -28,37 +27,24 @@
     http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
     http://www.springframework.org/schema/integration/http
     http://www.springframework.org/schema/integration/http/spring-integration-http-2.0.xsd">
-
-  <context:component-scan base-package="com.apress.prospringintegration.web"/>
-
-  <http:inbound-channel-adapter id="httpInboundAdapter"
-                                channel="receiveChannel"
-                                name="/inboundChannel.html"
-                                supported-methods="GET, POST"/>
-
-  <http:inbound-gateway request-channel="inboundChannel"
-                        reply-channel="outboundChannel"
-                        name="/inboundGateway.html"
-                        supported-methods="GET, POST"/>
-
-  <int:channel id="receiveChannel"/>
-
-  <int:channel id="inboundChannel"/>
-
-  <int:channel id="outboundChannel"/>
-
-  <int:service-activator id="receiver" input-channel="receiveChannel" ref="httpReceiver"/>
-
-  <int:service-activator id="gateway" input-channel="inboundChannel" ref="gatewayHandler"/>
-
-  <int:channel id="inboundMultipartChannel"/>
-
-  <http:inbound-channel-adapter channel="inboundMultipartChannel"
-                                name="/inboundMultipartAdapter.html"
-                                supported-methods="GET, POST"/>
-
-  <int:service-activator input-channel="inboundMultipartChannel"
-                         ref="multipartReceiver"/>
-
-
+    <context:component-scan base-package="com.apress.prospringintegration.web"/>
+    <http:inbound-channel-adapter id="httpInboundAdapter"
+                                  channel="receiveChannel"
+                                  name="/inboundChannel.html"
+                                  supported-methods="GET, POST"/>
+    <int:channel id="receiveChannel"/>
+    <int:channel id="inboundChannel"/>
+    <int:service-activator id="receiver" input-channel="receiveChannel" ref="httpReceiver"/>
+    <int:service-activator id="gateway" input-channel="inboundChannel" ref="gatewayHandler"/>
+    <int:channel id="outboundChannel"/>
+    <http:inbound-gateway request-channel="inboundChannel"
+                          reply-channel="outboundChannel"
+                          name="/inboundGateway.html"
+                          supported-methods="GET, POST"/>
+    <int:channel id="inboundMultipartChannel"/>
+    <http:inbound-channel-adapter channel="inboundMultipartChannel"
+                                  name="/inboundMultipartAdapter.html"
+                                  supported-methods="GET, POST"/>
+    <int:service-activator input-channel="inboundMultipartChannel"
+                           ref="multipartReceiver"/>
 </beans>

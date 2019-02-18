@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.apress.prospringintegration.customadapters.inbound.eventdriven.config;
 
 import com.apress.prospringintegration.customadapters.inbound.eventdriven.DirectoryMonitorInboundFileEndpoint;
@@ -24,16 +23,14 @@ import org.springframework.integration.config.xml.AbstractIntegrationNamespaceHa
 import org.springframework.integration.config.xml.IntegrationNamespaceUtils;
 import org.w3c.dom.Element;
 
-public class DirectoryMonitorNamespaceHandler
-        extends AbstractIntegrationNamespaceHandler {
+public class DirectoryMonitorNamespaceHandler extends AbstractIntegrationNamespaceHandler {
 
+    @Override
     public void init() {
-        registerBeanDefinitionParser("inbound-channel-adapter",
-                new DirectoryMonitorInboundFileEndpointParser());
+        registerBeanDefinitionParser("inbound-channel-adapter", new DirectoryMonitorInboundFileEndpointParser());
     }
 
-    public class DirectoryMonitorInboundFileEndpointParser
-            extends AbstractSingleBeanDefinitionParser {
+    public class DirectoryMonitorInboundFileEndpointParser extends AbstractSingleBeanDefinitionParser {
 
         @Override
         protected String getBeanClassName(Element element) {
@@ -51,13 +48,12 @@ public class DirectoryMonitorNamespaceHandler
         }
 
         @Override
-        protected void doParse(Element element, ParserContext parserContext,
-                               BeanDefinitionBuilder builder) {
-            IntegrationNamespaceUtils.setValueIfAttributeDefined(
-                    builder, element, "directory", "directoryToMonitor");
-            IntegrationNamespaceUtils.setReferenceIfAttributeDefined(
-                    builder, element, "channel", "outputChannel");
+        protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
+            IntegrationNamespaceUtils.setValueIfAttributeDefined(builder, element, "directory", "directoryToMonitor");
+            IntegrationNamespaceUtils.setReferenceIfAttributeDefined(builder, element, "channel", "outputChannel");
         }
+
     }
+
 }
 

@@ -16,12 +16,10 @@
 
 package com.apress.prospringintegration.webservice.web;
 
-import com.apress.prospringintegration.webservice.domain.TicketRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.oxm.castor.CastorMarshaller;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.server.endpoint.MessageEndpoint;
@@ -53,14 +51,12 @@ public class TicketIssuerServiceConfiguration {
     }
 
     @Bean
-    public DefaultWsdl11Definition tickets() throws Throwable {
-        DefaultWsdl11Definition defaultWsdl11Definition =
-                new DefaultWsdl11Definition();
+    public DefaultWsdl11Definition tickets() {
+        DefaultWsdl11Definition defaultWsdl11Definition = new DefaultWsdl11Definition();
         defaultWsdl11Definition.setSchema(schema());
         defaultWsdl11Definition.setPortTypeName("TicketRequest");
         defaultWsdl11Definition.setLocationUri("/tickets");
         defaultWsdl11Definition.setTargetNamespace(NAMESPACE);
-
         return defaultWsdl11Definition;
     }
 
@@ -69,11 +65,9 @@ public class TicketIssuerServiceConfiguration {
         String fqn = String.format("{%s}%s", NAMESPACE, "TicketRequest");
         Map<String, MessageEndpoint> endpoints = new HashMap<String, MessageEndpoint>();
         endpoints.put(fqn, wsInboundGateway);
-        PayloadRootQNameEndpointMapping payloadRootQNameEndpointMapping =
-                new PayloadRootQNameEndpointMapping();
+        PayloadRootQNameEndpointMapping payloadRootQNameEndpointMapping = new PayloadRootQNameEndpointMapping();
         payloadRootQNameEndpointMapping.setEndpointMap(endpoints);
-        payloadRootQNameEndpointMapping.setInterceptors(
-                new EndpointInterceptor[]{new PayloadLoggingInterceptor()});
+        payloadRootQNameEndpointMapping.setInterceptors(new EndpointInterceptor[]{new PayloadLoggingInterceptor()});
         return payloadRootQNameEndpointMapping;
     }
 

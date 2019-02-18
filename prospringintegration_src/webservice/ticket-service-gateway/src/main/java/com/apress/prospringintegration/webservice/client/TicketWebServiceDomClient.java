@@ -30,19 +30,12 @@ public class TicketWebServiceDomClient {
                     "<priority>%s</priority>" +
                     "</TicketRequest>";
 
-    public static void main(String[] args) throws Exception {
-        ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext("client.xml");
-
+    public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("client.xml");
         MessageChannel channel = context.getBean("ticketRequests", MessageChannel.class);
-
         String body = String.format(bodyTemplate, "Message Broker Down", "emergency");
         System.out.println(body);
-        MessagingTemplate messagingTemplate = new MessagingTemplate();
-        Message<?> message = messagingTemplate.sendAndReceive(
-                channel, MessageBuilder.withPayload(body).build());
-
-        System.out.println(message.getPayload());
+        System.out.println(new MessagingTemplate().sendAndReceive(channel, MessageBuilder.withPayload(body).build()).getPayload());
 
     }
 
