@@ -22,26 +22,17 @@ import java.util.List;
 
 public class TicketReporterMain {
 
-    public static void main(String[] args)
-            throws Throwable {
-        String contextName = "ticket-reporter.xml";
-
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
-
-        ProblemReporter problemReporter =
-                applicationContext.getBean(ProblemReporter.class);
-        TicketGenerator ticketGenerator =
-                applicationContext.getBean(TicketGenerator.class);
-
+    public static void main(String[] args) throws Throwable {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("ticket-reporter.xml");
+        ProblemReporter problemReporter = applicationContext.getBean(ProblemReporter.class);
+        TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
         while (true) {
             List<Ticket> tickets = ticketGenerator.createTickets();
             for (Ticket ticket : tickets) {
                 problemReporter.openTicket(ticket);
             }
-
             Thread.sleep(5000);
         }
     }
+
 }

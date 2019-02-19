@@ -24,24 +24,12 @@ import java.util.List;
 public class TicketMain {
 
     public static void main(String[] args) {
-
-        String contextName = "jms-backedchannel.xml";
-
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
-
-        TicketCreator ticketCreator =
-                applicationContext.getBean(TicketCreator.class);
-        TicketGenerator ticketGenerator =
-                applicationContext.getBean(TicketGenerator.class);
-        TicketMessageHandler ticketMessageHandler =
-                applicationContext.getBean(TicketMessageHandler.class);
-
-        SubscribableChannel channel =
-                applicationContext.getBean("ticketChannel", SubscribableChannel.class);
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("jms-backedchannel.xml");
+        TicketCreator ticketCreator = applicationContext.getBean(TicketCreator.class);
+        TicketGenerator ticketGenerator = applicationContext.getBean(TicketGenerator.class);
+        TicketMessageHandler ticketMessageHandler = applicationContext.getBean(TicketMessageHandler.class);
+        SubscribableChannel channel = applicationContext.getBean("ticketChannel", SubscribableChannel.class);
         channel.subscribe(ticketMessageHandler);
-
         while (true) {
             List<Ticket> tickets = ticketGenerator.createTickets();
             for (Ticket ticket : tickets) {
@@ -49,4 +37,5 @@ public class TicketMain {
             }
         }
     }
+
 }

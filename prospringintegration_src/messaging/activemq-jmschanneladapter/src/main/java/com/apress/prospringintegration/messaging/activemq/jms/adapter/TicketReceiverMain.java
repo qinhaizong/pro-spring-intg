@@ -21,9 +21,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TicketReceiverMain {
 
     public static void main(String[] args) {
-        String contextName = "ticket-receiver.xml";
-
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(contextName);
-        applicationContext.start();
+        new ClassPathXmlApplicationContext("ticket-receiver.xml");
     }
 }
