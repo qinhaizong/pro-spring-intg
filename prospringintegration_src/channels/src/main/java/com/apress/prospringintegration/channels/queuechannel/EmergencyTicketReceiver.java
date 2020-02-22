@@ -39,7 +39,7 @@ public class EmergencyTicketReceiver extends TicketReceiver {
         Message<?> ticketMessage;
         while (true) {
             List<Message<?>> emergencyTicketMessages = channel.purge(emergencyTicketSelector);
-            Assert.notNull(emergencyTicketMessages);
+            Assert.notNull(emergencyTicketMessages, "emergencyTicketMessages is null.");
             for (Message<?> ticketMessage1 : emergencyTicketMessages) {
                 LOGGER.info("Received ticket - " + ticketMessage1.getPayload().toString());
             }
