@@ -9,6 +9,8 @@
     <name>Pro Spring Integration</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <commons-fileupload>1.2</commons-fileupload>
         <junit.version>4.12</junit.version>
         <spring.integration.version>2.0.0.RELEASE</spring.integration.version>
@@ -16,7 +18,7 @@
         <hornetq.version>2.1.2.Final</hornetq.version>
         <activemq.version>5.4.1</activemq.version>
         <netty.version>3.2.2.Final</netty.version>
-        <qpid.version>0.11-SNAPSHOT</qpid.version>
+        <qpid.version>0.12</qpid.version>
         <log4j.version>1.2.16</log4j.version>
         <jms.version>1.1</jms.version>
         <spring.ws.version>1.5.9</spring.ws.version>
@@ -556,72 +558,4 @@
             <artifactId>spring-web</artifactId>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
-                <configuration>
-                    <source>1.6</source>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <target>1.6</target>
-                    <compilerArgument>-Xlint:all</compilerArgument>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>false</showDeprecation>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    <repositories>
-        <repository>
-            <id>spring-io-release</id>
-            <name>spring-io-release</name>
-            <url>https://repo.spring.io/release/</url>
-        </repository>
-        <repository>
-            <id>spring-io-snapshot</id>
-            <name>spring-io-snapshot</name>
-            <url>https://repo.spring.io/snapshot/</url>
-        </repository>
-        <repository>
-            <id>libs-release</id>
-            <name>libs-release</name>
-            <url>https://repo.spring.io/libs-release/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>libs-snapshot</id>
-            <name>libs-snapshot</name>
-            <url>https://repo.spring.io/libs-snapshot/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>codehaus-repo</id>
-            <name>Codehaus Repository</name>
-            <url>http://dist.codehaus.org/mule/dependencies/maven2</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>activiti</id>
-            <name>Activiti.org site</name>
-            <url>http://maven.alfresco.com/nexus/content/repositories/activiti/</url>
-        </repository>
-        <repository>
-            <id>JBoss Repository</id>
-            <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
-        </repository>
-        <repository>
-            <id>JBoss Maven2 Repository</id>
-            <url>http://repository.jboss.org/maven2</url>
-        </repository>
-        <repository>
-            <id>Apache Qpid Maven2 Repository</id>
-            <url>http://people.apache.org/~ebourg/qpid/maven/</url>
-        </repository>
-    </repositories>
 </project>
