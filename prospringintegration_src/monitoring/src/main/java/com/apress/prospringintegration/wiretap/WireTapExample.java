@@ -17,8 +17,8 @@
 package com.apress.prospringintegration.wiretap;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.MessageChannel;
-import org.springframework.integration.core.PollableChannel;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.PollableChannel;
 import org.springframework.integration.support.MessageBuilder;
 
 import java.util.HashMap;

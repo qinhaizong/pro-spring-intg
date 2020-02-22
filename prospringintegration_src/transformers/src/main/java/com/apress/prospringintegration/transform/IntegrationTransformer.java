@@ -16,7 +16,7 @@
 package com.apress.prospringintegration.transform;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.core.PollableChannel;
+import org.springframework.messaging.PollableChannel;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 

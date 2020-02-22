@@ -19,7 +19,7 @@ package com.apress.prospringintegration.endpoints.consumerendpointfactory;
 import com.apress.prospringintegration.endpoints.core.Ticket;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.integration.channel.DirectChannel;
-import org.springframework.integration.message.GenericMessage;
+import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
 @Component

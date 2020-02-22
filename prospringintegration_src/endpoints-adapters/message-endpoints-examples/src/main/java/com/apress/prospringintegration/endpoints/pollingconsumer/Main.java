@@ -46,7 +46,7 @@ public class Main {
         PollerMetadata pollerMetadata = new PollerMetadata();
         pollerMetadata.setTrigger(periodicTrigger);
         pollerMetadata.setMaxMessagesPerPoll(3);
-        ticketConsumer.setPollerMetadata(pollerMetadata);
+        //ticketConsumer.setPollerMetadata(pollerMetadata);
         // Starts the polling consumer in the other thread
         ticketConsumer.start();
         // Generates messages and sends to the channel

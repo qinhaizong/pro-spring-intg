@@ -19,8 +19,6 @@ package com.apress.prospringintegration.social.twitter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.integration.twitter.core.Twitter4jTemplate;
-import org.springframework.integration.twitter.core.TwitterOperations;
 
 @Configuration
 public class TwitterConfiguration {
@@ -37,11 +35,11 @@ public class TwitterConfiguration {
     @Value("${access-token-secret}")
     private String accessTokenSecret;
 
-    @Bean
+    /*TODO @Bean
     public TwitterOperations twitterTemplate() {
         Twitter4jTemplate twitterOperations =
                 new Twitter4jTemplate(
                         consumerKey, consumerSecret, accessToken, accessTokenSecret);
         return twitterOperations;
-    }
+    }*/
 }

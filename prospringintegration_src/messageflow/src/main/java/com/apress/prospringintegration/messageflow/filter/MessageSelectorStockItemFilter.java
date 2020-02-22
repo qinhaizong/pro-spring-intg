@@ -17,7 +17,7 @@
 package com.apress.prospringintegration.messageflow.filter;
 
 import com.apress.prospringintegration.messageflow.domain.MarketItem;
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.core.MessageSelector;
 import org.springframework.stereotype.Component;
 

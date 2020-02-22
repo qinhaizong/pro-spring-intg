@@ -17,8 +17,8 @@
 package com.apress.prospringintegration.messagestore.util;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.integration.Message;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.core.MessagingTemplate;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.stereotype.Component;

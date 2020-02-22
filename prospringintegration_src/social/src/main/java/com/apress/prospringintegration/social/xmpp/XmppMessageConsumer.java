@@ -16,14 +16,15 @@
 
 package com.apress.prospringintegration.social.xmpp;
 
-import org.apache.log4j.Logger;
-import org.springframework.integration.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.messaging.Message;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.stereotype.Component;
 
 @Component
 public class XmppMessageConsumer {
-    private static Logger LOG = Logger.getLogger(XmppMessageConsumer.class);
+    private static Logger LOG = LoggerFactory.getLogger(XmppMessageConsumer.class);
 
     @ServiceActivator
     public void consume(Message<?> input) {

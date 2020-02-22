@@ -19,9 +19,9 @@ package com.apress.prospringintegration.endpoints.consumerendpointfactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.config.ConsumerEndpointFactoryBean;
-import org.springframework.integration.core.MessageHandler;
+import org.springframework.messaging.MessageHandler;
 
 @Configuration
 public class ConsumerEndpointConfiguration {

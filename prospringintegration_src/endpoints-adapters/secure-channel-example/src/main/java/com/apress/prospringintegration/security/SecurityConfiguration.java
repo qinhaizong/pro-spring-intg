@@ -18,7 +18,6 @@ package com.apress.prospringintegration.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.access.vote.RoleVoter;
 
@@ -29,9 +28,8 @@ public class SecurityConfiguration {
 
     @Bean
     public AffirmativeBased accessDecisionManager() {
-        AffirmativeBased affirmativeBased = new AffirmativeBased();
+        AffirmativeBased affirmativeBased = new AffirmativeBased(Arrays.asList(new RoleVoter()));
         affirmativeBased.setAllowIfAllAbstainDecisions(true);
-        affirmativeBased.setDecisionVoters(Arrays.asList((AccessDecisionVoter) new RoleVoter()));
         return affirmativeBased;
     }
 }

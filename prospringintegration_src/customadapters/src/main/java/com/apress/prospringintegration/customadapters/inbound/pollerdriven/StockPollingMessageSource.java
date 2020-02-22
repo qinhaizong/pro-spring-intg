@@ -20,7 +20,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.web.client.ResponseExtractor;

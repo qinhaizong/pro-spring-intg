@@ -16,7 +16,7 @@
 
 package com.apress.prospringintegration.messageflow.router;
 
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.annotation.Router;
 import org.springframework.integration.router.PayloadTypeRouter;
 import org.springframework.stereotype.Component;

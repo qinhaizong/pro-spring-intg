@@ -19,13 +19,12 @@ package com.apress.prospringintegration.webservice.client;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.oxm.castor.CastorMarshaller;
 
 @Configuration
 public class TicketWebServiceMarshallingConfiguration {
-    @Bean
+    /*TODO @Bean
     public CastorMarshaller castorMarshaller() {
         CastorMarshaller castorMarshaller = new CastorMarshaller();
         return castorMarshaller;
-    }
+    }*/
 }

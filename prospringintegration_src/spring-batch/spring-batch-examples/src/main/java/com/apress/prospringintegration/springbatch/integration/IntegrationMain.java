@@ -20,8 +20,8 @@ import org.springframework.batch.core.*;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.integration.launch.JobLaunchRequest;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.Message;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.support.MessageBuilder;
 

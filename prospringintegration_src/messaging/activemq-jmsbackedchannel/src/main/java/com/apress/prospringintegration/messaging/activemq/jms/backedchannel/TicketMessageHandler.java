@@ -16,10 +16,10 @@
 
 package com.apress.prospringintegration.messaging.activemq.jms.backedchannel;
 
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.MessageRejectedException;
-import org.springframework.integration.MessagingException;
-import org.springframework.integration.core.MessageHandler;
+import org.springframework.messaging.MessagingException;
+import org.springframework.messaging.MessageHandler;
 import org.springframework.stereotype.Component;
 
 @Component

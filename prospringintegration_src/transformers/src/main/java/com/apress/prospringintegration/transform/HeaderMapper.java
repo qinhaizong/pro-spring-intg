@@ -16,7 +16,7 @@
 
 package com.apress.prospringintegration.transform;
 
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.stereotype.Component;

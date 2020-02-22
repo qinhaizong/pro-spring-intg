@@ -19,9 +19,9 @@ package com.apress.prospringintegration.customadapters.inbound;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.config.ConsumerEndpointFactoryBean;
-import org.springframework.integration.core.MessageHandler;
+import org.springframework.messaging.MessageHandler;
 import org.springframework.integration.endpoint.AbstractEndpoint;
 
 public class IntegrationTestUtils implements BeanFactoryAware {

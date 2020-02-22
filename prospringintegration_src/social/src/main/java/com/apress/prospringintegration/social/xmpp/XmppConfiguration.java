@@ -53,7 +53,7 @@ public class XmppConfiguration {
     @Value("${sasl-mechanism-supported-index}")
     private int saslMechanismSupportedIndex;
 
-    @Bean
+    /*TODO @Bean
     public XmppConnectionFactoryBean xmppConnectionFactoryBean() {
         SASLAuthentication.supportSASLMechanism(saslMechanismSupported,
                 saslMechanismSupportedIndex);
@@ -67,5 +67,5 @@ public class XmppConfiguration {
         connectionFactoryBean.setPassword(password);
 
         return connectionFactoryBean;
-    }
+    }*/
 }

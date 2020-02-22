@@ -17,7 +17,7 @@
 package com.apress.prospringintegration.messaging.activemq.jms.backedchannel;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.core.SubscribableChannel;
+import org.springframework.messaging.SubscribableChannel;
 
 import java.util.List;
 

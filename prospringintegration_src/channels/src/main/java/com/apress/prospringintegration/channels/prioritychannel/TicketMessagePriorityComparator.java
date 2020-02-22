@@ -17,7 +17,7 @@
 package com.apress.prospringintegration.channels.prioritychannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 
 import java.util.Comparator;
 

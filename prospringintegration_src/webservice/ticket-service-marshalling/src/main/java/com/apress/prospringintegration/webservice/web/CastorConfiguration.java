@@ -19,16 +19,16 @@ package com.apress.prospringintegration.webservice.web;
 import com.apress.prospringintegration.webservice.domain.TicketRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.oxm.castor.CastorMarshaller;
 
 @Configuration
 public class CastorConfiguration {
-    @Bean
+
+    /*TODO @Bean
     public CastorMarshaller castorMarshaller() {
         CastorMarshaller castorMarshaller = new CastorMarshaller();
         castorMarshaller.setTargetClass(TicketRequest.class);
         return castorMarshaller;
-    }
+    }*/
 
 
 }

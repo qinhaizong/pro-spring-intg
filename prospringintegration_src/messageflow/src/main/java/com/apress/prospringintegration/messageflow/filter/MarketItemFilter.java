@@ -18,7 +18,7 @@ package com.apress.prospringintegration.messageflow.filter;
 
 import com.apress.prospringintegration.messageflow.domain.MarketItem;
 import org.springframework.integration.annotation.Filter;
-import org.springframework.integration.annotation.Header;
+import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
 
 @Component

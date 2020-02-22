@@ -63,7 +63,7 @@ public class TicketIssuerServiceConfiguration {
     @Bean
     public PayloadRootQNameEndpointMapping payloadRootQNameEndpointMapping() {
         String fqn = String.format("{%s}%s", NAMESPACE, "TicketRequest");
-        Map<String, MessageEndpoint> endpoints = new HashMap<String, MessageEndpoint>();
+        Map<String, Object> endpoints = new HashMap<String, Object>();
         endpoints.put(fqn, wsInboundGateway);
         PayloadRootQNameEndpointMapping payloadRootQNameEndpointMapping = new PayloadRootQNameEndpointMapping();
         payloadRootQNameEndpointMapping.setEndpointMap(endpoints);

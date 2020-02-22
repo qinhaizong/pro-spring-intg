@@ -17,7 +17,7 @@
 package com.apress.prospringintegration.messaging.activemq.jms.backedchannel;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.integration.core.SubscribableChannel;
+import org.springframework.messaging.SubscribableChannel;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 

@@ -18,8 +18,8 @@ package com.apress.prospringintegration.ftp;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.Message;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.support.MessageBuilder;
 
 import java.io.File;

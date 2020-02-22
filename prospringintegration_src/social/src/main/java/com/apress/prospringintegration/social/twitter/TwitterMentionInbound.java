@@ -16,12 +16,13 @@
 
 package com.apress.prospringintegration.social.twitter;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TwitterMentionInbound {
-    private static Logger LOG = Logger.getLogger(TwitterMentionInbound.class);
+    private static Logger LOG = LoggerFactory.getLogger(TwitterMentionInbound.class);
 
     public static void main(String[] args) throws Exception {
         ApplicationContext context =

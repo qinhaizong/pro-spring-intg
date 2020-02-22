@@ -19,7 +19,7 @@ package com.apress.prospringintegration.customadapters.inbound.eventdriven;
 import com.apress.prospringintegration.customadapters.inbound.eventdriven.fsmon.DirectoryMonitor;
 import com.apress.prospringintegration.customadapters.inbound.eventdriven.fsmon.LinuxInotifyDirectoryMonitor;
 import org.apache.commons.lang.SystemUtils;
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.endpoint.MessageProducerSupport;
 import org.springframework.integration.file.FileHeaders;
 import org.springframework.integration.support.MessageBuilder;

@@ -16,7 +16,7 @@
 
 package com.apress.prospringintegration.customadapters;
 
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 
 public class LoggingServiceActivator {
     public void log(Message<?> msg) throws Throwable {

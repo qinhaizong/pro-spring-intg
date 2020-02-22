@@ -17,11 +17,11 @@
 package com.apress.prospringintegration.endpoints.eventdrivenconsumer;
 
 import com.apress.prospringintegration.endpoints.core.Ticket;
-import org.springframework.integration.Message;
-import org.springframework.integration.MessageDeliveryException;
-import org.springframework.integration.MessageHandlingException;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageDeliveryException;
+import org.springframework.messaging.MessageHandlingException;
 import org.springframework.integration.MessageRejectedException;
-import org.springframework.integration.core.MessageHandler;
+import org.springframework.messaging.MessageHandler;
 import org.springframework.stereotype.Component;
 
 @Component

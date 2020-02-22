@@ -18,13 +18,13 @@ package com.apress.prospringintegration.transform;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.oxm.castor.CastorMarshaller;
+//import org.springframework.oxm.castor.CastorMarshaller;
 
 @Configuration
 public class XmlConfiguration {
 
-    @Bean
+    /*TODO @Bean
     public CastorMarshaller marshaller() {
         return new CastorMarshaller();
-    }
+    }*/
 }

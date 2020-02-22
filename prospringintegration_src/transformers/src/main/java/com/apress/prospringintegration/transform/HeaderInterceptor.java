@@ -16,8 +16,8 @@
 
 package com.apress.prospringintegration.transform;
 
-import org.springframework.integration.annotation.Header;
-import org.springframework.integration.annotation.Headers;
+import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.integration.annotation.Transformer;
 import org.springframework.stereotype.Component;
 

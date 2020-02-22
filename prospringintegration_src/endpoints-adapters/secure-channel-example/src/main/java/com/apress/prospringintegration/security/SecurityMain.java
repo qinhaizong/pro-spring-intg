@@ -17,11 +17,10 @@
 package com.apress.prospringintegration.security;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextImpl;
@@ -68,7 +67,7 @@ public class SecurityMain {
         if (roles != null && roles.length > 0) {
             GrantedAuthority[] authorities = new GrantedAuthority[roles.length];
             for (int i = 0; i < roles.length; i++) {
-                authorities[i] = new GrantedAuthorityImpl(roles[i]);
+               //TODO authorities[i] = new GrantedAuthorityImpl(roles[i]);
             }
             authToken = new UsernamePasswordAuthenticationToken(username, password,
                     CollectionUtils.arrayToList(authorities));

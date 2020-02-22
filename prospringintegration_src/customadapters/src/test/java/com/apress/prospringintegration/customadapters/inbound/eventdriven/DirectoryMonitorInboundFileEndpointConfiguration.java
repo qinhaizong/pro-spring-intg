@@ -20,7 +20,7 @@ import com.apress.prospringintegration.customadapters.inbound.IntegrationTestUti
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.MessageChannel;
 
 import javax.annotation.PostConstruct;
 import java.io.File;

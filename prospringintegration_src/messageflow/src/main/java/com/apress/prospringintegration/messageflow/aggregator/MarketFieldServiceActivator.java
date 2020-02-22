@@ -17,7 +17,7 @@
 package com.apress.prospringintegration.messageflow.aggregator;
 
 import com.apress.prospringintegration.messageflow.domain.Field;
-import org.springframework.integration.annotation.Headers;
+import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.stereotype.Component;
 

@@ -16,15 +16,16 @@
 
 package com.apress.prospringintegration.social.twitter;
 
-import org.apache.log4j.Logger;
-import org.springframework.integration.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.messaging.Message;
 import org.springframework.integration.annotation.ServiceActivator;
-import org.springframework.integration.twitter.core.Tweet;
+import org.springframework.social.twitter.api.Tweet;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TwitterMessageConsumer {
-    private static Logger LOG = Logger.getLogger(TwitterMessageConsumer.class);
+    private static Logger LOG = LoggerFactory.getLogger(TwitterMessageConsumer.class);
 
     @ServiceActivator
     public void consume(Message<Tweet> message) {

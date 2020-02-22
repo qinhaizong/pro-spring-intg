@@ -33,7 +33,7 @@ public class MultipartHttpClient {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("multipart", "form-data"));
         HttpEntity request = new HttpEntity(map, headers);
-        ResponseEntity<?> httpResponse = new RestTemplate().exchange(uri, HttpMethod.POST, request, null);
+        ResponseEntity<?> httpResponse = new RestTemplate().exchange(uri, HttpMethod.POST, request, byte[].class);
         System.out.println("Status: " + httpResponse.getStatusCode().name());
     }
 

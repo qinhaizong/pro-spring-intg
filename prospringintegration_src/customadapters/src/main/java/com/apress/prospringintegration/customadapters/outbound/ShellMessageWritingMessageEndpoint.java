@@ -18,8 +18,8 @@ package com.apress.prospringintegration.customadapters.outbound;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.integration.Message;
-import org.springframework.integration.MessageHeaders;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageHeaders;
 import org.springframework.integration.handler.AbstractMessageHandler;
 import org.springframework.util.Assert;
 
@@ -52,7 +52,8 @@ public class ShellMessageWritingMessageEndpoint extends AbstractMessageHandler {
     }
 
     @Override
-    protected void handleMessageInternal(Message<?> message) throws Exception {
+    protected void handleMessageInternal(Message<?> message) {
+
 
         Assert.isInstanceOf(String.class, message.getPayload(),
                 "the payload must be a String");
@@ -74,6 +75,7 @@ public class ShellMessageWritingMessageEndpoint extends AbstractMessageHandler {
             throw new RuntimeException(throwable);
         }
     }
+
 
     protected int writeToShellCommand(String[] cmds, String msg) {
         try {

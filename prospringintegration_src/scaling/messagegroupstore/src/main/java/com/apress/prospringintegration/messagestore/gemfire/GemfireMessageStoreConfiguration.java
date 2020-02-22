@@ -19,7 +19,7 @@ package com.apress.prospringintegration.messagestore.gemfire;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.aggregator.CorrelationStrategy;
 import org.springframework.integration.aggregator.HeaderAttributeCorrelationStrategy;
 import org.springframework.integration.aggregator.ReleaseStrategy;

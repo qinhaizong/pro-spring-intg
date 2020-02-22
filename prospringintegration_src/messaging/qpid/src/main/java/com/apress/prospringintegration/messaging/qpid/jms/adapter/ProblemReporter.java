@@ -17,7 +17,7 @@
 package com.apress.prospringintegration.messaging.qpid.jms.adapter;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 

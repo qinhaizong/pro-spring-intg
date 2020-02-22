@@ -18,8 +18,8 @@ package com.apress.prospringintegration.social.xmpp;
 
 import org.jivesoftware.smack.packet.Presence;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.Message;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.support.MessageBuilder;
 
 public class XmppPresenceOutbound {

@@ -17,7 +17,8 @@
 package com.apress.prospringintegration.customadapters.inbound.eventdriven.fsmon;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.Assert;
 
@@ -28,7 +29,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class LinuxInotifyDirectoryMonitor implements InitializingBean, DirectoryMonitor {
-    private static Logger logger = Logger.getLogger(LinuxInotifyDirectoryMonitor.class);
+    private static Logger logger = LoggerFactory.getLogger(LinuxInotifyDirectoryMonitor.class);
 
     static {
         try {

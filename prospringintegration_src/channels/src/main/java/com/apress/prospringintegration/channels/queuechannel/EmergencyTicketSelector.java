@@ -18,7 +18,7 @@ package com.apress.prospringintegration.channels.queuechannel;
 
 import com.apress.prospringintegration.channels.core.Ticket;
 import com.apress.prospringintegration.channels.core.Ticket.Priority;
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.core.MessageSelector;
 
 public class EmergencyTicketSelector implements MessageSelector {

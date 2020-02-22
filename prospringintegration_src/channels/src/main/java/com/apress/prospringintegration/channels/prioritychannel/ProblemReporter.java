@@ -20,7 +20,7 @@ import com.apress.prospringintegration.channels.core.Ticket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.integration.channel.PriorityChannel;
-import org.springframework.integration.message.GenericMessage;
+import org.springframework.messaging.support.GenericMessage;
 
 public class ProblemReporter {
 

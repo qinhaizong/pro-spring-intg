@@ -16,7 +16,7 @@
 
 package com.apress.prospringintegration.stream;
 
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.stereotype.Component;
 

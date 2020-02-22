@@ -20,7 +20,7 @@ import org.hornetq.api.core.TransportConfiguration;
 import org.hornetq.jms.client.HornetQConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.integration.MessageChannel;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.jms.connection.CachingConnectionFactory;
 

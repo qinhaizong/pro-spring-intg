@@ -19,11 +19,11 @@ package com.apress.prospringintegration.channels.executorchannel;
 import com.apress.prospringintegration.channels.core.Ticket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.integration.Message;
-import org.springframework.integration.MessageDeliveryException;
-import org.springframework.integration.MessageHandlingException;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageDeliveryException;
+import org.springframework.messaging.MessageHandlingException;
 import org.springframework.integration.MessageRejectedException;
-import org.springframework.integration.core.MessageHandler;
+import org.springframework.messaging.MessageHandler;
 
 public class TicketMessageHandler implements MessageHandler {
 

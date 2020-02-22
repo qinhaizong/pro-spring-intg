@@ -16,12 +16,17 @@
 
 package com.apress.prospringintegration.customadapters.outbound;
 
-import org.springframework.integration.Message;
+import org.springframework.messaging.Message;
 import org.springframework.integration.handler.AbstractMessageHandler;
 
 public class SimpleOutboundMessageWritingEndpoint extends AbstractMessageHandler {
+
+
     @Override
-    protected void handleMessageInternal(Message<?> message) throws Exception {
+    protected void handleMessageInternal(Message<?> message) {
         //To change body of implemented methods use File | Settings | File Templates.
+
     }
+
+
 }

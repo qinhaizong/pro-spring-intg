@@ -16,11 +16,11 @@
 
 package com.apress.prospringintegration.social.feed;
 
-import com.sun.syndication.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndEntry ;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.integration.Message;
-import org.springframework.integration.core.PollableChannel;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.PollableChannel;
 
 public class FeedInboundApp {
 
