@@ -12,21 +12,17 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <commons-fileupload>1.2</commons-fileupload>
-        <junit.version>4.12</junit.version>
         <spring.version>3.0.5.RELEASE</spring.version>
         <hornetq.version>2.1.2.Final</hornetq.version>
-        <activemq.version>5.15.11</activemq.version>
         <netty.version>3.2.2.Final</netty.version>
         <qpid.version>0.12</qpid.version>
-        <spring.ws.version>1.5.9</spring.ws.version>
-        <activiti-engine.version>5.3</activiti-engine.version>
     </properties>
     <modules>
         <module>channels</module>
         <module>transformers</module>
         <module>endpoints-adapters</module>
         <module>monitoring</module>
-        <module>social</module>
+        <!--<module>social</module>-->
         <module>messaging</module>
         <module>intro-si</module>
         <module>spring-web</module>
@@ -103,11 +99,6 @@
                 <groupId>org.jboss.netty</groupId>
                 <artifactId>netty</artifactId>
                 <version>${netty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.activemq</groupId>
-                <artifactId>activemq-all</artifactId>
-                <version>${activemq.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.qpid</groupId>
