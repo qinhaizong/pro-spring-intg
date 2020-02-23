@@ -17,8 +17,8 @@
 package com.apress.prospringintegration.customadapters.inbound.eventdriven;
 
 import com.apress.prospringintegration.customadapters.inbound.IntegrationTestUtils;
-import junit.framework.Assert;
 import org.apache.commons.io.IOUtils;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -83,9 +83,9 @@ public class DirectoryMonitorInboundFileEndpointTests {
         int cnt = 10;
         for (int i = 0; i < cnt; i++) {
             File out = new File(directoryToMonitor, i + ".txt");
-            Writer w = new BufferedWriter(new FileWriter(out));
-            IOUtils.write("test" + i, w);
-            IOUtils.closeQuietly(w);
+            try (Writer w = new BufferedWriter(new FileWriter(out))) {
+                IOUtils.write("test" + i, w);
+            }
         }
 
         Thread.sleep(TimeUnit.SECONDS.toMillis(20));

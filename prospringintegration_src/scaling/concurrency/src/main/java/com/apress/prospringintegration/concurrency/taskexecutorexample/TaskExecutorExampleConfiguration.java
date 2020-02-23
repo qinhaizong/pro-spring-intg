@@ -19,13 +19,12 @@ package com.apress.prospringintegration.concurrency.taskexecutorexample;
 import com.apress.prospringintegration.concurrency.DemonstrationRunnable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.SyncTaskExecutor;
 import org.springframework.core.task.support.TaskExecutorAdapter;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.scheduling.timer.ScheduledTimerTask;
-import org.springframework.scheduling.timer.TimerFactoryBean;
-import org.springframework.scheduling.timer.TimerTaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 import java.util.concurrent.Executors;
 
@@ -55,10 +54,11 @@ public class TaskExecutorExampleConfiguration {
     }
 
     @Bean(name = "timerTaskExecutorWithoutScheduledTimerTasks")
-    public TimerTaskExecutor timerTaskExecutor() {
-        TimerTaskExecutor timerTaskExecutor = new TimerTaskExecutor();
-        timerTaskExecutor.setDelay(10000);
-        return timerTaskExecutor;
+    public AsyncTaskExecutor timerTaskExecutor() {
+        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
+        scheduler.setPoolSize(1);
+        scheduler.initialize();
+        return scheduler;
     }
 
     @Bean
@@ -66,8 +66,8 @@ public class TaskExecutorExampleConfiguration {
         return new SyncTaskExecutor();
     }
 
-    @Bean(name = "timerTaskExecutorWithScheduledTimerTasks")
-    public TimerTaskExecutor timerTaskExecutor1() {
+    /*@Bean(name = "timerTaskExecutorWithScheduledTimerTasks")
+    public AsyncTaskExecutor timerTaskExecutor1() {
         ScheduledTimerTask scheduledTimerTask = new ScheduledTimerTask();
         scheduledTimerTask.setDelay(10);
         scheduledTimerTask.setFixedRate(true);
@@ -80,7 +80,7 @@ public class TaskExecutorExampleConfiguration {
         timerFactoryBean.setBeanName("timerFactoryBean");
 
         return new TimerTaskExecutor(timerFactoryBean.getObject());
-    }
+    }*/
 
     @Bean
     public ThreadPoolTaskExecutor threadPoolTaskExecutor() {

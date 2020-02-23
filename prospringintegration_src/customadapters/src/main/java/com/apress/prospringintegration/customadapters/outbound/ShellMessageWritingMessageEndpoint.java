@@ -23,6 +23,7 @@ import org.springframework.messaging.MessageHeaders;
 import org.springframework.integration.handler.AbstractMessageHandler;
 import org.springframework.util.Assert;
 
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -82,13 +83,8 @@ public class ShellMessageWritingMessageEndpoint extends AbstractMessageHandler {
             ProcessBuilder processBuilder = new ProcessBuilder(Arrays.asList(cmds));
             Process proc = processBuilder.start();
 
-            Writer streamWriter = null;
-
-            try {
-                streamWriter = new OutputStreamWriter(proc.getOutputStream());
+            try (Writer streamWriter = new OutputStreamWriter(proc.getOutputStream())) {
                 streamWriter.write(msg);
-            } finally {
-                IOUtils.closeQuietly(streamWriter);
             }
 
             int retVal = proc.waitFor();

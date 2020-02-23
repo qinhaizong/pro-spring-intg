@@ -27,6 +27,7 @@ import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,7 +47,7 @@ public class StockPollingMessageSource implements MessageSource<Stock>, Initiali
                             throws IOException {
                         String fragPattern =
                                 String.format(jsonFragmentTemplate, symbol, symbol);
-                        String bodyAsText = IOUtils.toString(clientHttpResponse.getBody());
+                        String bodyAsText = IOUtils.toString(clientHttpResponse.getBody(), StandardCharsets.UTF_8);
 
                         int indexOfMatch = bodyAsText.indexOf(fragPattern);
 

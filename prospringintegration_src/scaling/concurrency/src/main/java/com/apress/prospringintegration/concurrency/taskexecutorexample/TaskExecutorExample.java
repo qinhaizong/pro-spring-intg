@@ -18,11 +18,11 @@ package com.apress.prospringintegration.concurrency.taskexecutorexample;
 
 import com.apress.prospringintegration.concurrency.DemonstrationRunnable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.SyncTaskExecutor;
 import org.springframework.core.task.support.TaskExecutorAdapter;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.scheduling.timer.TimerTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -44,7 +44,7 @@ public class TaskExecutorExample {
     */
 
     @Resource(name = "timerTaskExecutorWithoutScheduledTimerTasks")
-    private TimerTaskExecutor timerTaskExecutorWithoutScheduledTimerTasks;
+    private AsyncTaskExecutor timerTaskExecutorWithoutScheduledTimerTasks;
 
     @Autowired
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;
