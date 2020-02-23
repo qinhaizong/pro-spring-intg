@@ -16,6 +16,8 @@
 
 package com.apress.prospringintegration.file;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.stereotype.Component;
 
@@ -23,8 +25,11 @@ import java.io.File;
 
 @Component
 public class ReplyHandler {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReplyHandler.class);
+
     @ServiceActivator
     public void handleMessage(File file) {
-        System.out.println("*** File Copied: " + file.getName());
+        LOGGER.info("*** File Copied: ", file.getName());
     }
 }

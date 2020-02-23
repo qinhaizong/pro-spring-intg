@@ -16,14 +16,18 @@
 
 package com.apress.prospringintegration.file;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.stereotype.Component;
 
 @Component
 public class StringHandler {
+    private static final Logger LOGGER = LoggerFactory.getLogger(StringHandler.class);
+
     @ServiceActivator
     public String handleString(String input) {
-        System.out.println("*** Copying text: " + input);
+        LOGGER.info("*** Copying text: " + input);
         return input;
     }
 }

@@ -16,14 +16,18 @@
 
 package com.apress.prospringintegration.file;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ByteHandler {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ByteHandler.class);
+
     @ServiceActivator
     public byte[] handleBytes(byte[] input) {
-        System.out.println("Copying " + input.length + " bytes");
+        LOGGER.info("Copying " + input.length + " bytes");
         return input;
     }
 }
