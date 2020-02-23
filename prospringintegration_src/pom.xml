@@ -13,22 +13,12 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <commons-fileupload>1.2</commons-fileupload>
         <junit.version>4.12</junit.version>
-        <!--<spring.integration.version>2.0.0.RELEASE</spring.integration.version>-->
         <spring.version>3.0.5.RELEASE</spring.version>
         <hornetq.version>2.1.2.Final</hornetq.version>
         <activemq.version>5.15.11</activemq.version>
         <netty.version>3.2.2.Final</netty.version>
         <qpid.version>0.12</qpid.version>
-        <log4j.version>1.2.16</log4j.version>
-        <jms.version>1.1</jms.version>
         <spring.ws.version>1.5.9</spring.ws.version>
-        <!-- Sandbox Projects -->
-        <!-- May need to synchronized with current sandbox version
-        <spring.integration.comet.version>2.1.BUILD-SNAPSHOT</spring.integration.comet.version>
-        <spring.integration.amqp.version>2.2.0.RELEASE</spring.integration.amqp.version>
-        <spring.integration.gemfire.version>2.1.0.RELEASE</spring.integration.gemfire.version>
-        <spring.integration.activiti.version>2.0.3.RELEASE</spring.integration.activiti.version>
-        -->
         <activiti-engine.version>5.3</activiti-engine.version>
     </properties>
     <modules>
@@ -71,8 +61,8 @@
             </dependency>
             <dependency>
                 <groupId>javax.jms</groupId>
-                <artifactId>jms</artifactId>
-                <version>${jms.version}</version>
+                <artifactId>javax.jms-api</artifactId>
+                <version>2.0.1</version>
             </dependency>
             <dependency>
                 <groupId>xerces</groupId>
