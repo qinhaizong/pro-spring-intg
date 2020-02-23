@@ -20,7 +20,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/integration
-    http://www.springframework.org/schema/integration/spring-integration-2.0.xsd">
+    http://www.springframework.org/schema/integration/spring-integration.xsd">
     <int:payload-serializing-transformer input-channel="input" output-channel="byte-array"/>
     <int:payload-deserializing-transformer input-channel="byte-array" output-channel="output"/>
     <int:logging-channel-adapter id="logger" log-full-message="true"/>

@@ -23,13 +23,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/integration
-    http://www.springframework.org/schema/integration/spring-integration-2.0.xsd
+    http://www.springframework.org/schema/integration/spring-integration.xsd
 		http://www.springframework.org/schema/security
-		http://www.springframework.org/schema/security/spring-security-3.0.xsd
+		http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/integration/security
-		http://www.springframework.org/schema/integration/security/spring-integration-security-2.0.xsd">
+		http://www.springframework.org/schema/integration/security/spring-integration-security.xsd">
     <context:component-scan base-package="com.apress.prospringintegration.security"/>
     <security:authentication-manager alias="authenticationManager">
         <security:authentication-provider user-service-ref="userDetailsService"/>

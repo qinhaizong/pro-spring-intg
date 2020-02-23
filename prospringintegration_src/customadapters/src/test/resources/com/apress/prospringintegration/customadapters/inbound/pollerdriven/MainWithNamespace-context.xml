@@ -22,13 +22,13 @@
        xmlns:stock="http://www.apress.com/schema/integration/stock"
        xsi:schemaLocation="
     http://www.apress.com/schema/integration/stock
-    http://www.apress.com/schema/integration/stock/apress-integration-stock-1.0.xsd
+    http://www.apress.com/schema/integration/stock/apress-integration-stock.xsd
     http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/integration
     http://www.springframework.org/schema/integration/spring-integration.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    http://www.springframework.org/schema/context/spring-context.xsd">
 
   <context:property-placeholder location="test.properties"/>
 

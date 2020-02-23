@@ -21,7 +21,7 @@
        xsi:schemaLocation="http://www.mycompany.com/schema/strnorm
     http://www.mycompany.com/schema/strnorm/strnorm.xsd
     http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <strnorm:normalize id="stringnormalizer" strategy="UPPER"/>
 </beans>
