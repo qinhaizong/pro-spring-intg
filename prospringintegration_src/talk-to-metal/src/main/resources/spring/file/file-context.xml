@@ -15,10 +15,10 @@
   ~ limitations under the License.
   -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:int="http://www.springframework.org/schema/integration"
        xmlns:file="http://www.springframework.org/schema/integration/file"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/integration
@@ -26,13 +26,13 @@
     http://www.springframework.org/schema/integration/file
     http://www.springframework.org/schema/integration/file/spring-integration-file.xsd">
 
-  <int:channel id="files"/>
+    <int:channel id="files"/>
 
-  <file:inbound-channel-adapter id="filesIn" channel="files"
-                                directory="file:input" prevent-duplicates="true">
-    <int:poller fixed-rate="1000" max-messages-per-poll="100"/>
-  </file:inbound-channel-adapter>
+    <file:inbound-channel-adapter id="filesIn" channel="files"
+                                  directory="file:input" prevent-duplicates="true">
+        <int:poller fixed-rate="1000" max-messages-per-poll="100"/>
+    </file:inbound-channel-adapter>
 
-  <file:outbound-channel-adapter id="filesOut" channel="files" directory="file:output"/>
+    <file:outbound-channel-adapter id="filesOut" channel="files" directory="file:output"/>
 
 </beans>

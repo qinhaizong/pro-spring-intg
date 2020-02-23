@@ -15,11 +15,11 @@
   ~ limitations under the License.
   -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:int="http://www.springframework.org/schema/integration"
        xmlns:file="http://www.springframework.org/schema/integration/file"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
@@ -29,20 +29,20 @@
     http://www.springframework.org/schema/integration/file
     http://www.springframework.org/schema/integration/file/spring-integration-file.xsd">
 
-  <context:component-scan base-package="com.apress.prospringintegration.file"/>
+    <context:component-scan base-package="com.apress.prospringintegration.file"/>
 
-  <int:channel id="fileOut"/>
+    <int:channel id="fileOut"/>
 
-  <file:inbound-channel-adapter id="filesIn" channel="input"
-                                directory="file:input" prevent-duplicates="true">
-    <int:poller fixed-rate="1000"/>
-  </file:inbound-channel-adapter>
+    <file:inbound-channel-adapter id="filesIn" channel="input"
+                                  directory="file:input" prevent-duplicates="true">
+        <int:poller fixed-rate="1000"/>
+    </file:inbound-channel-adapter>
 
-  <file:file-to-string-transformer id="transformer" input-channel="input"
-                                   output-channel="output" charset="UTF-8"/>
+    <file:file-to-string-transformer id="transformer" input-channel="input"
+                                     output-channel="output" charset="UTF-8"/>
 
-  <int:service-activator id="handler" input-channel="output" output-channel="fileOut" ref="stringHandler"/>
+    <int:service-activator id="handler" input-channel="output" output-channel="fileOut" ref="stringHandler"/>
 
-  <file:outbound-channel-adapter id="filesOut" channel="fileOut" directory="file:output"/>
+    <file:outbound-channel-adapter id="filesOut" channel="fileOut" directory="file:output"/>
 
 </beans>

@@ -15,11 +15,11 @@
   ~ limitations under the License.
   -->
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:int="http://www.springframework.org/schema/integration"
        xmlns:file="http://www.springframework.org/schema/integration/file"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
@@ -29,18 +29,18 @@
     http://www.springframework.org/schema/integration/file
     http://www.springframework.org/schema/integration/file/spring-integration-file.xsd">
 
-  <context:component-scan base-package="com.apress.prospringintegration.file"/>
+    <context:component-scan base-package="com.apress.prospringintegration.file"/>
 
-  <int:channel id="files"/>
+    <int:channel id="files"/>
 
-  <file:inbound-channel-adapter id="filesIn" channel="moveInput" directory="file:input" prevent-duplicates="true">
-    <int:poller fixed-rate="1000"/>
-  </file:inbound-channel-adapter>
+    <file:inbound-channel-adapter id="filesIn" channel="moveInput" directory="file:input" prevent-duplicates="true">
+        <int:poller fixed-rate="1000"/>
+    </file:inbound-channel-adapter>
 
-  <file:outbound-gateway id="mover" request-channel="moveInput"
-                         reply-channel="output"
-                         directory="file:output"/>
+    <file:outbound-gateway id="mover" request-channel="moveInput"
+                           reply-channel="output"
+                           directory="file:output"/>
 
-  <int:service-activator id="handler" input-channel="output" ref="replyHandler"/>
+    <int:service-activator id="handler" input-channel="output" ref="replyHandler"/>
 
 </beans>

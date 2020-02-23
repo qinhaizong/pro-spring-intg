@@ -16,11 +16,11 @@
 
 package com.apress.prospringintegration.file;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class FileRegexCopy {
+
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring/file/file-regex-context.xml");
+        new ClassPathXmlApplicationContext("spring/file/file-regex-context.xml");
     }
 }
